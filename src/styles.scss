@@ -49,6 +49,34 @@ mat-input-element {
   border: 1px solid #5B00A7;
 }
 
+.login-container {
+  display: flex;
+  height: 100vh; // Ajustar según sea necesario
+
+  &__image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('assets/3wepb.jpg') no-repeat center center;
+    background-size: cover;
+  }
+
+  &__form {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form__container {
+    width: 80%; // Ajustar según sea necesario
+    max-width: 400px; // Ajustar según sea necesario
+    padding: 20px;
+    background: #fff; // Color de fondo del formulario
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Sombra del formulario
+  }
+}
 
   .mdc-button {
     width: 100%;
