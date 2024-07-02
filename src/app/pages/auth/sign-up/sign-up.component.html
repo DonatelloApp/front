@@ -1,6 +1,6 @@
-<div class="form">
-  <div class="form__container">
-    <h1>Sign up</h1>
+<div class="sign-up-container">
+  <div class="sign-up-form">
+    <h1>Sign Up</h1>
     <form [formGroup]="form" (ngSubmit)="signUp()">
       <div>
         <mat-form-field>
@@ -17,11 +17,12 @@
           <mat-error>This field is required</mat-error>
         </mat-form-field>
       </div>
+
       <div>
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" />
-          <mat-error *ngIf="isEmailValid as messsage">{{ messsage }}</mat-error>
+          <mat-error *ngIf="isEmailValid as message">{{ message }}</mat-error>
         </mat-form-field>
       </div>
 
@@ -47,13 +48,13 @@
       </div>
 
       <div>
-        <button mat-flat-button color="accent" type="submit">Sign up</button>
+        <button mat-flat-button color="accent" type="submit">Sign Up</button>
       </div>
     </form>
     <hr />
-    <app-button-providers />
-    <span class="small-text log-in-redirect"
-      >Already have an account? <a routerLink="/auth/log-in">Log in</a></span
-    >
+    <app-button-providers></app-button-providers>
+    <span class="small-text log-in-redirect">
+      Already have an account? <a routerLink="/auth/log-in">Log in</a>
+    </span>
   </div>
 </div>

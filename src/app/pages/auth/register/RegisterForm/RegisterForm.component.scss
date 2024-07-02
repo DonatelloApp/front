@@ -1,0 +1,58 @@
+.registerForm-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Asegura que la altura ocupe toda la pantalla
+    background-color: #f0f0f0; // Color de fondo para mejorar la visibilidad del formulario
+  
+    &__image {
+        flex: 1;
+       // background: url('') no-repeat center center;
+        background-size: cover;
+        }
+    
+    .registerForm {
+      background: #ffffff; // Fondo blanco para el formulario
+      padding: 20px; // Espaciado interno
+      border-radius: 8px; // Bordes redondeados
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra para darle profundidad
+      width: 100%;
+      max-width: 400px; // Ancho máximo del formulario
+  
+     h1 {
+        text-align: center; // Centra el título
+        margin-bottom: 20px; // Espaciado inferior
+      }
+  
+      form {
+        width: 100%;
+  
+        mat-form-field {
+          width: 100%; // Asegura que los campos ocupen el ancho completo
+          margin-bottom: 20px; // Espaciado entre los campos
+        }
+  
+        button {
+          width: 100%; // Asegura que el botón ocupe el ancho completo
+        }
+      }
+  
+      hr {
+        width: 100%;
+        margin: 20px 0;
+      }
+  
+      .small-text {
+        text-align: center;
+        display: block;
+        margin-top: 20px;
+  
+        a {
+          color: #5b00a7; // Color del enlace
+          text-decoration: none;
+        }
+        
+      }
+    }
+  }
+  

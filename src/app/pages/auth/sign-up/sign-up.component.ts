@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { NgIf } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
@@ -7,15 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
+import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterModule } from '@angular/router';
-
-import { AuthService, Credential } from '../../../core/services/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgIf } from '@angular/common';
+import { AuthService, Credential } from '../../../core/services/auth.service';
 import { ButtonProviders } from '../components/button-providers/button-providers.component';
 
 interface SignUpForm {
@@ -41,6 +39,8 @@ interface SignUpForm {
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   providers: [],
+  styleUrls: ['./sign-up.component.scss'] // Aquí se referencia el archivo SCSS
+
 })
 export default class SignUpComponent {
   hide = true;
@@ -106,10 +106,13 @@ export default class SignUpComponent {
   }
 
   openSnackBar() {
-    return this._snackBar.open('Succesfully Sign up 😀', 'Close', {
+    return this._snackBar.open('Successfully signed up 😀', 'Close', {
       duration: 2500,
       verticalPosition: 'top',
       horizontalPosition: 'end',
     });
   }
 }
+
+
+

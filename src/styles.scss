@@ -1,64 +1,10 @@
-:root {
-  --background: #ffffff;
-  --green: #5B00A7;
-  --dark-text: #060215
-  --text: #060215;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  color: var(--text);
-  background: var(--background);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  
-}
-
-.form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  
-  
-
-  h1 {
-    margin-bottom: 30px;
-    
-  }
-
-  &__container {
-    width: 100%;
-    max-width: 400px;
-    
-  }
-
-  hr {
-    margin: 30px 0;
-  }
-
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-}
-mat-input-element {
-  border: 1px solid #5B00A7;
-}
-
 .login-container {
   display: flex;
-  height: 100vh; // Ajustar según sea necesario
+  height: 100vh; // Asegura que la altura ocupe toda la pantalla
 
   &__image {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url('assets/3wepb.jpg') no-repeat center center;
+    background: url('../src/assets/3.jpg') no-repeat center center;
     background-size: cover;
   }
 
@@ -67,38 +13,44 @@ mat-input-element {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+    
+    .form {
+      width: 80%; // Ajusta el ancho del formulario
+      max-width: 400px; // Ancho máximo del formulario
+      padding: 20px; // Espaciado interno
 
-  .form__container {
-    width: 80%; // Ajustar según sea necesario
-    max-width: 400px; // Ajustar según sea necesario
-    padding: 20px;
-    background: #fff; // Color de fondo del formulario
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); // Sombra del formulario
-  }
-}
+      &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-  .mdc-button {
-    width: 100%;
-  }
+        h1 {
+          margin-bottom: 20px;
+        }
 
-  .small-text {
-    font-size: 14px;
-    display: block;
-    text-align: center;
+        form {
+          width: 100%;
 
-    &.providers {
-      margin-bottom: 30px;
-    }
+          mat-form-field {
+            width: 100%; // Asegura que los campos ocupen el ancho completo
+            margin-bottom: 20px; // Espaciado entre los campos
+          }
 
-    &.log-in-redirect {
-      margin-top: 30px;
+          button {
+            width: 100%; // Asegura que el botón ocupe el ancho completo
+          }
+        }
 
-      a {
-        color: var(--green);
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
-  }
-}
+        hr {
+          width: 100%;
+          margin: 20px 0;
+        }
+
+        .small-text {
+          text-align: center;
+        }
+        }        
+          }
+        }
+        }
+
