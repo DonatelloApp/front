@@ -1,0 +1,38 @@
+.footer-position{
+    position: relative;
+    width: 100%;
+    bottom:0px;
+}
+
+.footer-color{
+    background:#CEB2E6 !important;
+}
+
+.footer-logo{
+    display: inline-block;
+    vertical-align: middle;
+    width: 70px;
+}
+
+.footer-logo img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.custom-subscribe-input {
+    width: 100%;
+    padding-right: 55px !important; 
+    box-sizing: border-box;
+}
+  
+.custom-subscribe-botton {
+    position: absolute;
+    right: 3px; 
+    top: 3px;
+    bottom: 3px;
+    line-height: 1 !important;
+    z-index: 4;
+    background-color: #5B00A7;
+    border-color: #5B00A7;
+}
