@@ -1,56 +1,76 @@
-.login-container {
-  display: flex;
-  height: 100vh; // Asegura que la altura ocupe toda la pantalla
+:root {
+  --background: #ffffff;
+  --green: #5B00A7;
+  --dark-text: #060215
+  --text: #060215;
+}
 
-  &__image {
-    flex: 1;
-    background: url('../src/assets/3.jpg') no-repeat center center;
-    background-size: cover;
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: 'Lato', sans-serif;
+  background-color: #E93C3C;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  
+  
+
+  h1 {
+    margin-bottom: 30px;
+    
   }
 
-  &__form {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  &__container {
+    width: 100%;
+    max-width: 400px;
     
-    .form {
-      width: 80%; // Ajusta el ancho del formulario
-      max-width: 400px; // Ancho máximo del formulario
-      padding: 20px; // Espaciado interno
+  }
 
-      &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+  hr {
+    margin: 30px 0;
+  }
 
-        h1 {
-          margin-bottom: 20px;
-        }
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+mat-input-element {
+  border: 1px solid #5B00A7;
+}
 
-        form {
-          width: 100%;
 
-          mat-form-field {
-            width: 100%; // Asegura que los campos ocupen el ancho completo
-            margin-bottom: 20px; // Espaciado entre los campos
-          }
+  .mdc-button {
+    width: 100%;
+  }
 
-          button {
-            width: 100%; // Asegura que el botón ocupe el ancho completo
-          }
-        }
+  .small-text {
+    font-size: 14px;
+    display: block;
+    text-align: center;
 
-        hr {
-          width: 100%;
-          margin: 20px 0;
-        }
+    &.providers {
+      margin-bottom: 30px;
+    }
 
-        .small-text {
-          text-align: center;
-        }
-        }        
-          }
-        }
-        }
+    &.log-in-redirect {
+      margin-top: 30px;
 
+      a {
+        color: var(--green);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

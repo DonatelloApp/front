@@ -12,10 +12,6 @@ export const routes: Routes = [
     canActivate: [publicGuard],
     children: [
       {
-        path: 'sign-up',
-        loadComponent: () => import('./pages/auth/sign-up/sign-up.component'),
-      },
-      {
         path: 'log-in',
         loadComponent: () => import('./pages/auth/log-in/log-in.component'),
       },
