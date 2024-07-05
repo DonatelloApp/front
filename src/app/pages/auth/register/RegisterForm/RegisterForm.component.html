@@ -1,55 +1,56 @@
-<div class="registerForm-container">
-  <div class="registerForm-container__image">
-    <img src="./assets/4.png" alt="Imagen de registro">
-  </div>
-  <div class="registerForm-container__form">
-    <div class="registerForm">
-      <h1>Crear cuenta</h1>
-      <form [formGroup]="form" (ngSubmit)="register()">
-        <div>
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="names" placeholder="Tu nombre" />
-            <mat-error *ngIf="!isNameValid">Nombre es requerido</mat-error>
-          </mat-form-field>
-        </div>
+<div class="register-container">
+  <img src="./assets/4.png" class="register-container__image" alt="Imagen de registro">
+  <div class="register-container__form">
+    <div class="form">
+      <div class="form__container">
+        <h1>Crear cuenta</h1>
+        <form [formGroup]="form" (ngSubmit)="register()">
+          <div>
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="names" placeholder="Tu nombre" />
+              <mat-error *ngIf="!isNameValid">Nombre es requerido</mat-error>
+            </mat-form-field>
+          </div>
 
-        <div>
-          <mat-form-field>
-            <mat-label>Apellidos</mat-label>
-            <input matInput formControlName="lastName" placeholder="Tus apellidos" />
-            <mat-error *ngIf="!isLastNameValid">Apellidos son requeridos</mat-error>
-          </mat-form-field>
-        </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Apellidos</mat-label>
+              <input matInput formControlName="lastName" placeholder="Tus apellidos" />
+              <mat-error *ngIf="!isLastNameValid">Apellidos son requeridos</mat-error>
+            </mat-form-field>
+          </div>
 
-        <div>
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="email@email.com" />
-            <mat-error *ngIf="!isEmailValid as message">{{ message }}</mat-error>
-          </mat-form-field>
-        </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" placeholder="email@email.com" />
+              <mat-error *ngIf="!isEmailValid as message">{{ message }}</mat-error>
+            </mat-form-field>
+          </div>
 
-        <div>
-          <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-            </button>
-            <mat-error>Password es requerido</mat-error>
-          </mat-form-field>
-        </div>
+          <div>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </button>
+              <mat-error>Password es requerido</mat-error>
+            </mat-form-field>
+          </div>
 
-        <div>
-          <button mat-flat-button color="accent" type="submit">Crear cuenta</button>
-        </div>
-      </form>
-      <hr />
-      <span class="small-text register-redirect">
-        ¿Ya tienes una cuenta?
-        <a routerLink="/auth/log-in">Inicia sesión.</a>
-      </span>
+          <div>
+            <button mat-flat-button color="accent" type="submit">Crear cuenta</button>
+          </div>
+        </form>
+        <hr />
+        <app-button-providers [isLogin]="true" />
+        <span class="small-text register-redirect">
+          ¿Ya tienes una cuenta?
+          <a routerLink="/auth/log-in">Inicia sesión.</a>
+        </span>
+      </div>
     </div>
   </div>
 </div>

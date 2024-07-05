@@ -1,12 +1,12 @@
 .login-container {
   display: flex;
-  height: 110vh; // Asegura que la altura ocupe toda la pantalla
+  height: 110vh;
   background-color: #000000;
 
   &__image {
     flex: 1;
-    max-width: 50%; // Asegura que la imagen no ocupe más del 50% del contenedor
-    object-fit: initial; // Mantiene la proporción de la imagen
+    max-width: 50%;
+    object-fit: initial;
   }
 
   &__form {
@@ -14,11 +14,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     .form {
-      width: 80%; // Ajusta el ancho del formulario
-      max-width: 400px; // Ancho máximo del formulario
-      padding: 20px; // Espaciado interno
+      width: 80%;
+      max-width: 400px;
+      padding: 20px;
 
       &__container {
         display: flex;
@@ -33,12 +33,12 @@
           width: 100%;
 
           mat-form-field {
-            width: 100%; // Asegura que los campos ocupen el ancho completo
-            margin-bottom: 20px; // Espaciado entre los campos
+            width: 100%;
+            margin-bottom: 20px;
           }
 
           button {
-            width: 100%; // Asegura que el botón ocupe el ancho completo
+            width: 100%;
           }
         }
 
@@ -49,11 +49,12 @@
 
         .small-text {
           text-align: justify;
-          background-color: transparent; /* Cambia el color de fondo a transparente */
-          color: white; /* Color de texto blanco */
-          border: none; /* Elimina cualquier borde */
-        }        
-      }        
+          background-color: transparent;
+          color: white;
+          border: none;
+          margin-top: 30px;
+        }
+      }
     }
   }
 }
