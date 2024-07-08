@@ -14,10 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-//import { AuthService, Credential } from '../../../core/services/auth.service';
-import { ButtonProviders } from '../components/button-providers/button-providers.component';
-import { LoginService } from 'src/app/service/auth/login.service';
-import { LoginRequest } from 'src/app/service/auth/loginRequest';
+import { ButtonProviders } from 'src/app/components/common/button-providers/button-providers.component';
+import { LoginService } from 'src/app/core/services/login.service';
+import { LoginRequest } from 'src/app/core/models/loginRequest';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 interface LogInForm {
@@ -48,8 +47,6 @@ export default class LogInComponent {
   hide = true;
 
   formBuilder = inject(FormBuilder); 
-
-  //private authService = inject(AuthService);
 
   private loginService = inject(LoginService);
 
