@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgIf } from '@angular/common';
-import { ButtonProviders } from "../../components/button-providers/button-providers.component";
+import { ButtonProviders } from "src/app/components/common/button-providers/button-providers.component";
 
 @Component({
     standalone: true,

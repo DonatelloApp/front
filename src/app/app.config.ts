@@ -4,8 +4,8 @@ import { routes } from './app-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { JwtInterceptorService } from './service/auth/jwt-interceptor.service';
-import { ErrorInterceptorService } from './service/auth/error-interceptor.service';
+import { JwtInterceptorService } from './core/interceptors/jwt-interceptor.service';
+import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 
 const NO_NG_MODULES = importProvidersFrom([BrowserAnimationsModule]);
 

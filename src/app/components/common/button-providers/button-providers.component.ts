@@ -23,7 +23,7 @@ export class ButtonProviders {
     if (provider === 'google') {
       this.signUpWithGoogle();
     } else {
-      this.signUpWithGithub();
+      this.signUpWithGithub(); 
     }
   }
 
