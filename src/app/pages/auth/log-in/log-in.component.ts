@@ -14,8 +14,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { AuthService, Credential } from '../../../core/services/auth.service';
+//import { AuthService, Credential } from '../../../core/services/auth.service';
 import { ButtonProviders } from '../components/button-providers/button-providers.component';
+import { LoginService } from 'src/app/service/auth/login.service';
+import { LoginRequest } from 'src/app/service/auth/loginRequest';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 interface LogInForm {
   email: FormControl<string>;
@@ -34,23 +37,26 @@ interface LogInForm {
     NgIf,
     MatSnackBarModule,
     ButtonProviders,
+    HttpClientModule
   ],
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss'],
-  providers: [],
+  providers: [LoginService, HttpClient],
 })
 export default class LogInComponent {
   hide = true;
 
-  formBuilder = inject(FormBuilder);
+  formBuilder = inject(FormBuilder); 
 
-  private authService = inject(AuthService);
+  //private authService = inject(AuthService);
+
+  private loginService = inject(LoginService);
 
   private router = inject(Router);
 
   private _snackBar = inject(MatSnackBar);
-
+ 
   form: FormGroup<LogInForm> = this.formBuilder.group({
     email: this.formBuilder.control('', {
       validators: [Validators.required, Validators.email],
@@ -79,18 +85,28 @@ export default class LogInComponent {
   async logIn(): Promise<void> {
     if (this.form.invalid) return;
 
-    const credential: Credential = {
-      email: this.form.value.email || '',
+    const loginReq: LoginRequest = {
+      mail: this.form.value.email || '',
       password: this.form.value.password || '',
-    };
-
+    }
+ 
     try {
-      await this.authService.logInWithEmailAndPassword(credential);
+      this.loginService.login(loginReq).subscribe({
+        next: (userData)=> {
+          console.log(userData);
+        },
+        error: (errorData)=> {
+          console.error(errorData); 
+        },
+        complete: () => {
+          console.info("Login completado");
+        }
+      });
       const snackBarRef = this.openSnackBar();
 
-      snackBarRef.afterDismissed().subscribe(() => {
+     /* snackBarRef.afterDismissed().subscribe(() => {
         this.router.navigateByUrl('/');
-      });
+      });*/
     } catch (error) {
       console.error(error);
     }

@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import {
+/*import {
   Auth,
   AuthProvider,
   GithubAuthProvider,
@@ -9,7 +9,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
-} from '@angular/fire/auth';
+} from '@angular/fire/auth';*/
 
 export interface Credential {
   email: string;
@@ -20,7 +20,7 @@ export interface Credential {
   providedIn: 'root',
 })
 export class AuthService {
-  private auth: Auth = inject(Auth);
+  /*private auth: Auth = inject(Auth);
 
   readonly authState$ = authState(this.auth);
 
@@ -66,5 +66,5 @@ export class AuthService {
     } catch (error: any) {
       return error;
     }
-  }
+  }*/ 
 }
