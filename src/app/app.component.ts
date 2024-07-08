@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, HttpClientModule],
+  imports: [
+    RouterModule,
+    NavbarComponent,
+    RouterOutlet, 
+    RouterLink, 
+    RouterLinkActive,
+    HttpClientModule
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
