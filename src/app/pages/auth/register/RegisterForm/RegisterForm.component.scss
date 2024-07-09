@@ -1,60 +1,113 @@
-.register-container {
+.singIn-container {
+
+
   display: flex;
-  height: 110vh;
-  background-color: #000000;
 
-  &__image {
-    flex: 1;
-    max-width: 50%;
-    object-fit: initial;
-  }
+  flex-direction: column;
 
-  &__form {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    .form {
-      width: 80%;
-      max-width: 400px;
-      padding: 20px;
+}
 
-      &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+.row {
 
-        h1 {
-          margin-bottom: 20px;
-        }
+  flex-grow: 1;
 
-        form {
-          width: 100%;
+}
 
-          mat-form-field {
-            width: 100%;
-            margin-bottom: 20px;
-          }
+.card {
 
-          button {
-            width: 100%;
-          }
-        }
+  flex-grow: 1;
+  border: none;
 
-        hr {
-          width: 100%;
-          margin: 20px 0;
-        }
+}
 
-        .small-text {
-          text-align: justify;
-          background-color: transparent;
-          color: white;
-          border: none;
-          margin-top: 30px;
-        }        
-      }        
-    }
-  }
+.donatello-logo{
+  display: flex;
+  justify-content: flex-end;
+  vertical-align: middle;
+  max-height: 20vh;
+}
+
+.image-logo{
+  display: block;
+  height: auto;
+  width: 15%;
+  max-height: 20vh;
+  margin-right: 5%;
+}
+
+.card-body {
+
+  flex-grow: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+.singIn-container__image {
+  height: auto;
+  object-fit: fill;
+  width: 100%;
+  
+}
+
+.title-position{
+  width: 60%;
+  justify-content: left;
+}
+
+.card-title {
+  margin-bottom: 20px;
+}
+
+.form-singIn{
+  width: 60%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-color: black;
+}
+
+.password-input{
+  padding-right: 55px !important; 
+}
+
+.show-password-botton {
+  position: absolute;
+  right: 3px; 
+  top: 3px;
+  bottom: 3px;
+  line-height: 1 !important;
+  z-index: 4;
+  background-color: #5B00A7;
+  border-color: #5B00A7;
+}
+
+.btn-singIn{
+  background-color: #5B00A7;
+  border-color: #5B00A7;
+  width: 100%;
+}
+
+.small-text {
+  text-align: justify;
+  background-color: transparent;
+  color: rgb(7, 7, 7);
+  border: none;
+  margin-top: 30px;
+}
+
+.logIn-link{
+  color: #5B00A7;
+  font-weight: bold;
+  text-decoration: none;
 }
