@@ -49,5 +49,20 @@ document.getElementById('colorOption').addEventListener('click', function() {
     applyCurrentColors();
 });
 
+  function toggleActive() {
+    const btn = document.getElementById('colorOption');
+    btn.classList.toggle('active');
+  }
+  function toggleActive() {
+    const btn = document.getElementById('colorOption');
+    btn.classList.toggle('active');
+    if (btn.classList.contains('active')) {
+      btn.style.backgroundColor = '#F8F8F8'; 
+    } else {
+      btn.style.backgroundColor = '#CEB2E6'; 
+    }
+}
+
+  
 applyCurrentColors();
 
