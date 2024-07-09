@@ -16,7 +16,7 @@ import { ButtonProviders } from "src/app/components/common/button-providers/butt
 import { SingInRequest } from 'src/app/core/models/singInRequest';
 import { SingInService } from 'src/app/core/services/singIn.service';
 import { capitalizeWords } from 'src/app/utils/utils';
-import { PhoneInputComponent } from 'src/app/components/common/phoneInput/phone-input.component';
+import { PhoneInputComponent } from 'src/app/components/common/phoneInput/phoneInput.component';
 
 @Component({
     standalone: true,

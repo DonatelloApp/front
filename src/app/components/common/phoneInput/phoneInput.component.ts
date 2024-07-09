@@ -5,8 +5,8 @@ declare var intlTelInput: any;
 @Component({
   selector: 'app-phone-input',
   standalone: true,
-  templateUrl: './phone-input.component.html',
-  styleUrls: ['./phone-input.component.scss']
+  templateUrl: './phoneInput.component.html',
+  styleUrls: ['./phoneInput.component.scss']
 })
 export class PhoneInputComponent {
   @Output() phoneChanged = new EventEmitter<string>();
