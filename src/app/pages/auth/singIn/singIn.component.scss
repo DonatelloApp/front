@@ -1,0 +1,113 @@
+.singIn-container {
+
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+.row {
+
+  flex-grow: 1;
+
+}
+
+.card {
+
+  flex-grow: 1;
+  border: none;
+
+}
+
+.donatello-logo{
+  display: flex;
+  justify-content: flex-end;
+  vertical-align: middle;
+  max-height: 20vh;
+}
+
+.image-logo{
+  display: block;
+  height: auto;
+  width: 15%;
+  max-height: 20vh;
+  margin-right: 5%;
+}
+
+.card-body {
+
+  flex-grow: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+.singIn-container__image {
+  height: auto;
+  object-fit: fill;
+  width: 100%;
+  
+}
+
+.title-position{
+  width: 60%;
+  justify-content: left;
+}
+
+.card-title {
+  margin-bottom: 20px;
+}
+
+.form-singIn{
+  width: 60%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border-color: black;
+}
+
+.password-input{
+  padding-right: 55px !important; 
+}
+
+.show-password-botton {
+  position: absolute;
+  right: 3px; 
+  top: 3px;
+  bottom: 3px;
+  line-height: 1 !important;
+  z-index: 4;
+  background-color: #5B00A7;
+  border-color: #5B00A7;
+}
+
+.btn-singIn{
+  background-color: #5B00A7;
+  border-color: #5B00A7;
+  width: 100%;
+}
+
+.small-text {
+  text-align: justify;
+  background-color: transparent;
+  color: rgb(7, 7, 7);
+  border: none;
+  margin-top: 30px;
+}
+
+.logIn-link{
+  color: #5B00A7;
+  font-weight: bold;
+  text-decoration: none;
+}

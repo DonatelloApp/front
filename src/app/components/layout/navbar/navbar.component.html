@@ -16,8 +16,8 @@
             <a class="nav-link" routerLink="contact-us">CONTACTO</a>
           </li>
         </ul>   
-        <button class="btn btn-green-turtle me-2" routerLink="log-in">INICIAR SESION</button>
-        <button class="btn btn-purple-turtle" routerLink="sign-in">REGISTRARSE</button>
+        <button *ngIf="!userLoginOn" class="btn btn-green-turtle me-2" routerLink="auth/log-in">INICIAR SESION</button>
+        <button *ngIf="!userLoginOn" lass="btn btn-purple-turtle" routerLink="auth/sign-in">REGISTRARSE</button>
       </div>
     </div>
   </nav>

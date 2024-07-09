@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -9,7 +10,8 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
     NavbarComponent,
     RouterOutlet, 
     RouterLink, 
-    RouterLinkActive
+    RouterLinkActive,
+    HttpClientModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
