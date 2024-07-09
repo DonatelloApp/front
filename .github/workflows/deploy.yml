@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: pmpn update
-        uses: npm install -g pnpm@latest
+        uses: pnpm install --force
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
