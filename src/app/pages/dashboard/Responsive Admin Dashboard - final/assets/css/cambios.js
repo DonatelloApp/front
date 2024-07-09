@@ -1,4 +1,3 @@
-// Define diferentes conjuntos de colores
 const colorSets = [
     {
         '--blue': '#060215',
@@ -30,9 +29,8 @@ const colorSets = [
     }
 ];
 
-let currentColorSetIndex = 0; // Índice del conjunto de colores actual
+let currentColorSetIndex = 0;
 
-// Función para aplicar los colores del conjunto actual
 function applyCurrentColors() {
     const currentColors = colorSets[currentColorSetIndex];
     Object.keys(currentColors).forEach(key => {
@@ -40,18 +38,16 @@ function applyCurrentColors() {
     });
 }
 
-// Evento click en el botón
+
 document.getElementById('colorOption').addEventListener('click', function() {
-    // Incrementa el índice para cambiar al siguiente conjunto de colores
+
     currentColorSetIndex++;
     if (currentColorSetIndex >= colorSets.length) {
-        currentColorSetIndex = 0; // Vuelve al primer conjunto cuando llega al final
+        currentColorSetIndex = 0; 
     }
-// Ejemplo de cambio de color
-    // Aplica los colores del conjunto actual
+
     applyCurrentColors();
 });
 
-// Aplica el primer conjunto de colores al cargar la página
 applyCurrentColors();
 
