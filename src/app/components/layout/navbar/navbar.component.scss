@@ -1,0 +1,26 @@
+.navbar-logo{
+    display: inline-block;
+    vertical-align: middle;
+    width: 70px;
+  }
+
+  .navbar-logo img{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-purple-turtle{
+    background-color: #5B00A7;
+    color: #F8F8F8;
+  }
+
+  .btn-green-turtle{
+    background-color: #018744;
+    color: #F8F8F8;
+  }
+
+  .navbar {
+    border-radius: 0 0 10px 10px; /* Redondea solo los bordes inferiores */
+  }
+

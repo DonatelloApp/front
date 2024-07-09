@@ -1,24 +1,23 @@
 import { Routes } from '@angular/router';
-
-import { authGuard, publicGuard } from './core/guards';
+//import { authGuard, publicGuard } from './core/guards';
 
 export const routes: Routes = [
-  {
+  /*{
     path: '',
-    canActivate: [authGuard],
+    //canActivate: [authGuard],
     loadComponent: () => import('./pages/home/home.component'),
-  },
+  },*/
   {
     path: 'auth',
-    canActivate: [publicGuard],
+    //canActivate: [publicGuard],
     children: [
       {
-        path: 'sign-up',
-        loadComponent: () => import('./pages/auth/sign-up/sign-up.component'),
+        path: 'log-in',
+        loadComponent: () => import('./pages/auth/logIn/logIn.component'),
       },
       {
-        path: 'log-in',
-        loadComponent: () => import('./pages/auth/log-in/log-in.component'),
+        path: 'sing-in',
+        loadComponent: () => import('./pages/auth/singIn/singIn.component').then(m => m.SingInComponent),
       },
     ],
   },
