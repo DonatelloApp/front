@@ -39,8 +39,8 @@ interface LogInForm {
     HttpClientModule
   ],
   selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.scss'],
+  templateUrl: './logIn.component.html',
+  styleUrls: ['./logIn.component.scss'],
   providers: [LoginService, HttpClient],
 })
 export default class LogInComponent {

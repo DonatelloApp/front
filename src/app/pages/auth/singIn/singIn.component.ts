@@ -21,8 +21,8 @@ import { PhoneInputComponent } from 'src/app/components/common/phoneInput/phone-
 @Component({
     standalone: true,
     selector: 'app-register-form',
-    templateUrl: './RegisterForm.component.html',
-    styleUrls: ['./RegisterForm.component.scss'],
+    templateUrl: './singIn.component.html',
+    styleUrls: ['./singIn.component.scss'],
     imports: [
         MatFormFieldModule,
         MatInputModule,
@@ -36,7 +36,7 @@ import { PhoneInputComponent } from 'src/app/components/common/phoneInput/phone-
         PhoneInputComponent
     ]
 })
-export class RegisterFormComponent {
+export class SingInComponent {
   hide = true;
   form: FormGroup;
   isLastNameValid: any;

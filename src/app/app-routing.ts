@@ -13,11 +13,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'log-in',
-        loadComponent: () => import('./pages/auth/log-in/log-in.component'),
+        loadComponent: () => import('./pages/auth/logIn/logIn.component'),
       },
       {
-        path: 'register',
-        loadComponent: () => import('./pages/auth/register/RegisterForm/RegisterForm.component').then(m => m.RegisterFormComponent),
+        path: 'sing-in',
+        loadComponent: () => import('./pages/auth/singIn/singIn.component').then(m => m.SingInComponent),
       },
     ],
   },
