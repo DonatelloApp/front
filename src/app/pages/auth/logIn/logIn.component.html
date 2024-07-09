@@ -1,0 +1,51 @@
+<div class="login-container">
+  <div class="row no-gutters">
+    <div class="col-md-6 justify-content-center">
+      <img src="./assets/3.jpg" class="img-fluid login-container__image" alt="" style="height: 100%; object-fit: cover;">
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="title-position">
+            <h1 class="card-title">Iniciar sesión</h1>
+          </div>
+          <form class="form-login" [formGroup]="form" (ngSubmit)="logIn()">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" formControlName="email" />
+              <div class="invalid-feedback" *ngIf="isEmailValid as messsage">{{ messsage }}</div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="{{ hide ? 'password' : 'text' }}"
+                class="form-control"
+                formControlName="password"
+              />
+              <button
+                class="btn btn-secondary"
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <i class="fas {{ hide ? 'fa-eye-slash' : 'fa-eye' }}"></i>
+              </button>
+              <div class="invalid-feedback">This field is required</div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-login">Iniciar sesión</button>
+            </div>
+          </form>
+          <hr />
+          <app-button-providers [isLogin]="true" />
+          <p class="small-text log-in-redirect">
+            ¿Aún no tienes cuenta?
+            <a class="registry-link" routerLink="/auth/register/">Regístrate.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
