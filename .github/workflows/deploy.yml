@@ -14,11 +14,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: pmpn update
-        uses: pnpm install --force
-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci 
 
       - name: Verify dependencies
         run: npm audit
