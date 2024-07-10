@@ -1,0 +1,73 @@
+<div class="singIn-container">
+  <div class="row no-gutters">
+    <div class="col-md-6 justify-content-center">
+      <img src="./assets/4.png" class="img-fluid singIn-container__image" alt="Imagen de registro">
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="col donatello-logo">
+          <img src="./assets/logo.png" class="img-fluid image-logo" alt="Imagen de registro">
+        </div>
+        <div class="card-body">
+          <div class="title-position">
+            <h1 class="card-title">Crear cuenta</h1>
+          </div>
+          <form class="form-singIn" [formGroup]="form" (ngSubmit)="register()">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" class="form-control rounded text-capitalize rounded" formControlName="name" placeholder="Tu nombre">
+              <div class="invalid-feedback" *ngIf="!isNameValid">Nombre es requerido</div>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Apellidos</label>
+              <input type="text" class="form-control rounded text-capitalize" formControlName="lastName" placeholder="Tus apellidos">
+              <div class="invalid-feedback" *ngIf="!isLastNameValid">Apellidos son requeridos</div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control rounded" formControlName="email" placeholder="email@email.com">
+              <div class="invalid-feedback" *ngIf="!isEmailValid as message">{{ message }}</div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <div class="phone-input-container">
+                <app-phone-input (phoneChanged)="onPhoneChanged($event)"></app-phone-input>
+              </div>
+              <div class="invalid-feedback" *ngIf="!isEmailValid as message">{{ message }}</div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control rounded password-input" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <div class="input-group-append">
+                    <button class="btn btn-primary show-password-botton rounded-circle" type="button" (click)="hide = !hide">
+                      <i class="bi bi-eye" *ngIf="hide"></i>
+                      <i class="bi bi-eye-slash" *ngIf="!hide"></i>
+                    </button>  
+                </div>
+              </div>
+              <div class="invalid-feedback">Password es requerido</div>
+            </div>
+            <div class="form-group">
+              <label for="password2">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control rounded password-input" formControlName="password2" [type]="hide ? 'password' : 'text'">
+                <div class="input-group-append">
+                    <button class="btn btn-primary show-password-botton rounded-circle" type="button" (click)="hide = !hide">
+                      <i class="bi bi-eye" *ngIf="hide"></i>
+                      <i class="bi bi-eye-slash" *ngIf="!hide"></i>
+                    </button>  
+                </div>
+              </div>
+              <div class="invalid-feedback">Password es requerido</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-singIn">Crear cuenta</button>
+          </form>
+          <hr class="my-4">
+          <app-button-providers [isLogin]="true"></app-button-providers>
+          <p class="small text-muted">¿Ya tienes una cuenta? <a class="logIn-link" routerLink="/auth/log-in">Inicia sesión.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
