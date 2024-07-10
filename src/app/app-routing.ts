@@ -21,4 +21,8 @@ export const routes: Routes = [
       },
     ],
   },
+  {
+    path:'proveedores',
+    loadComponent:()=>import('./pages/proveedores/proveedores.component').then(m=>m.ProveedoresComponent)
+  }
 ];
