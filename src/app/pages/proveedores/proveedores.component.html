@@ -1,1 +1,73 @@
-<p>proveedores works!</p>
+
+<h2>Agenda de Proveedores</h2>
+<hr>
+
+<div>
+  <div *ngFor="let prov of proveedores">
+    {{prov.id}}{{prov.nombre}},{{prov.empresa}},{{prov.contacto}},{{prov.telefono}}//
+    <button (click)="modificar(prov.id)">Modificar</button>
+  </div>
+</div>
+
+
+<form  (ngSubmit)="guardar()" autocomplete="off" [formGroup]="formulario">
+
+  <div>
+    <label for="nombre">Nombre</label>
+    <div>
+      <input 
+        type="text" 
+        placeholder="Proovedor" 
+        formControlName="nombre">
+
+      <span *ngIf="formulario.controls['nombre'].errors && formulario.controls['nombre'].touched">
+          Campo Requerido
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="empresa">Empresa</label>
+    <div>
+      <input 
+        type="text" 
+        placeholder="Nombre de la Empresa" 
+        formControlName="empresa">
+
+        <span *ngIf="formulario.controls['empresa'].errors && formulario.controls['empresa'].touched">
+          Campo Requerido
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="contacto">Ultimo Contacto</label>
+    <div>
+      <input 
+        type="date" 
+        placeholder="dd/mm/aaaa" 
+        formControlName="contacto">
+
+        <span *ngIf="formulario.controls['contacto'].errors && formulario.controls['contacto'].touched">
+          Campo Requerido
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <label for="telefono">Telefono</label>
+    <div>
+      <input 
+        type="tel" 
+        placeholder="Número" 
+        formControlName="telefono">
+        <span *ngIf="formulario.controls['telefono'].errors && formulario.controls['telefono'].touched">
+          Campo Requerido
+      </span>
+    </div>
+  </div>
+
+  <button type="submit">Añadir</button>
+</form>
+
+
