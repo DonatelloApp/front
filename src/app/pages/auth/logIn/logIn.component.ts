@@ -43,7 +43,7 @@ interface LogInForm {
   styleUrls: ['./logIn.component.scss'],
   providers: [LoginService, HttpClient],
 })
-export default class LogInComponent {
+export class LogInComponent {
   hide = true;
 
   formBuilder = inject(FormBuilder); 
