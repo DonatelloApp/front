@@ -29,13 +29,13 @@ export class FormProveedoresComponent {
   }
 
 
-  guardar(){
-    if(this.formulario.invalid){
+  guardar() {
+    if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
       return;
     }
-    let nuevo:Proveedor = this.formulario.value;
-    console.log(this.formulario.value);
+    const nuevo: Proveedor = this.formulario.value;
+    console.log('Formulario enviado', this.formulario.value);
     this.provService.postProveedor(nuevo);
     this.formulario.reset();
   }

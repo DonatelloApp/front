@@ -21,74 +21,34 @@
           <td>{{prov.empresa}}</td>
           <td>{{prov.contacto}}</td>
           <td>{{prov.telefono}}</td>
-          <td><button>Modificar</button></td>
+          <td><button type="button" data-bs-toggle="modal" data-bs-target="#modalModificar">Modificar</button></td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <app-form-proveedores></app-form-proveedores>
-  <!-- <form class="container" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="formulario">
-    
-    <div class="row">
-      
-      <div class="col">
-        <label class="form-label" for="nombre">Nombre</label>
-        <div>
-          <input class="form-control" type="text" placeholder="Proveedor" formControlName="nombre">
-
-          <span class="form-text" *ngIf="formulario.controls['nombre'].errors && formulario.controls['nombre'].touched">
-            Campo Requerido
-          </span>
-        </div>
-      </div>
-
-      <div class="col">
-        <label class="form-label" for="empresa">Empresa</label>
-        <div>
-          <input class="form-control" type="text" placeholder="Nombre de la Empresa" formControlName="empresa">
-
-          <span class="form-text"
-            *ngIf="formulario.controls['empresa'].errors && formulario.controls['empresa'].touched">
-            Campo Requerido
-          </span>
-        </div>
-      </div>
-
-      <div class="col">
-        <label class="form-label" for="contacto">Ultimo Contacto</label>
-        <div>
-          <input class="form-control" type="date" placeholder="dd/mm/aaaa" formControlName="contacto">
-
-          <span class="form-text"
-            *ngIf="formulario.controls['contacto'].errors && formulario.controls['contacto'].touched">
-            Campo Requerido
-          </span>
-        </div>
-      </div>
-
-      <div class="col">
-        <label class="form-label" for="telefono">Telefono</label>
-        <div>
-          <input class="form-control" type="tel" placeholder="Número" formControlName="telefono">
-          <span class="invalid-feedback"
-            *ngIf="formulario.controls['telefono'].errors && formulario.controls['telefono'].touched">
-            Campo Requerido
-          </span>
-        </div>
-      </div>
-
-      <div class="col col-lg-3">
-        <div class="boton">
-          <button class="btn btn-primary" type="submit">Añadir</button>
-        </div>
-        
-      </div>
-    </div>
-
-
-  </form> -->
-
 
 
 </section>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalModificar" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Proveedor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-form-proveedores #formProveedores></app-form-proveedores>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
