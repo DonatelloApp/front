@@ -11,7 +11,7 @@
           <th>Empresa</th>
           <th>Contactado por última vez</th>
           <th>Teléfono</th>
-          <th></th>
+          <th><button type="button" data-bs-toggle="modal" data-bs-target="#modalNuevo">Nuevo</button></th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +39,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar Proveedor</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar proveedor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -47,7 +47,25 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="onSubmit()">Guardar</button>
+        <button type="button" class="btn btn-primary" >Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalNuevo" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar nuevo proveedor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-form-proveedores #formProveedores></app-form-proveedores>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>

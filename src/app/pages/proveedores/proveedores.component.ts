@@ -25,9 +25,9 @@ export class ProveedoresComponent implements OnInit{
     this.proveedores = this.provService.getProveedores();
   }
 
-  onSubmit() {
+  /*onSubmit() {
     this.formProveedores.guardar();
     console.log('Submit emitido');
-  }
+  }*/
   
 }
