@@ -13,6 +13,13 @@
   --redLight:#ff9e9e;
 }
 
+button{
+  background-color: var(--white);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 section{
   background-color: var(--gray100);
   padding: 2rem;

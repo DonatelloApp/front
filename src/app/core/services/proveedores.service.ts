@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Proveedor } from '../models/proveedor';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -135,7 +137,22 @@ export class ProveedoresService {
     }
   ]
 
-  constructor() { }
+  apiUrl = '';
+  
+  constructor( private http: HttpClient) { }
+
+  getProveedorById(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  createProveedor(product: any): Observable<any> {
+    return this.http.post(this.apiUrl, product);
+  }
+
+  updateProveedor(id: string, product: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, product);
+  }
+
 
   getProveedores(){
     return this.proveedores;

@@ -1,4 +1,4 @@
-<form class="container" (ngSubmit)="guardar()" autocomplete="off" [formGroup]="formulario" name="prov-form">
+<form class="container" (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="formulario" name="prov-form">
   <div class="row">
     <div class="col">
       <label class="form-label" for="nombre">Nombre</label>
@@ -34,6 +34,12 @@
         <span class="invalid-feedback" *ngIf="formulario.controls['telefono'].errors && formulario.controls['telefono'].touched">
           Campo Requerido
         </span>
+      </div>
+    </div>
+
+    <div class="col">
+      <div>
+       <button class="btn btn-primary" type="submit">Guardar</button>
       </div>
     </div>
   </div>

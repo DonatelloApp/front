@@ -11,9 +11,11 @@ declare var $:any;
 })
 export class ModalComponent {
 
-  @Output() submitForm = new EventEmitter<void>();
+  @Input()title: string = '';
+  @Output() close = new EventEmitter<void>();
 
-  onSubmit() {
-    this.submitForm.emit();
+  onClose() {
+    this.close.emit();
   }
+  
 }
