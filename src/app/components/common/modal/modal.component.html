@@ -1,23 +1,15 @@
-<!-- <div class="modal fade" id="modalModificar" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal"#modalAgregar aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="row">
+        <div class="col-11"><h2>{{ title }}</h2></div>
+        <div class="col"><span class="close" (click)="onClose()">&times;</span></div>
       </div>
-      <div class="modal-body">
+      
+      <div class="row">
         <ng-content></ng-content>
       </div>
-      <div class="modal-footer"></div>
     </div>
   </div>
-</div> -->
-
-
-<div class="modal">
-  <div class="modal-content">
-    <span class="close" (click)="onClose()">&times;</span>
-    <h2>{{ title }}</h2>
-    <ng-content></ng-content>
-  </div>
+  
 </div>

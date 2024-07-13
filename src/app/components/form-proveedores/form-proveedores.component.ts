@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Proveedor } from 'src/app/core/models/proveedor';
-import { ProveedoresService } from 'src/app/core/services/proveedores.service';
 
 @Component({
   selector: 'app-form-proveedores',

@@ -1,0 +1,76 @@
+:root{
+  --black:#060215;
+  --gray100:#e6e5e5;
+  --gray300:#c2bdbd;
+  --white:#f8f8f8;
+
+  --greenTurtle:#018744;
+  --purpleTurtle:#5b00a7;
+  --redTurtle:#e93c3c;
+
+  --greenLight:#86dfb3;
+  --purpleLight:#ceb2e6;
+  --redLight:#ff9e9e;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+.col{
+  margin: 0;
+  padding: 0;
+}
+
+
+.fondo{
+  background-color: var(--white);
+}
+
+
+.head{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-around;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.flecha{
+  display: flex;
+  justify-content: flex-start;
+
+  padding-top: 0;
+  margin: 0;
+
+}
+
+div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 1.5rem;
+}
+
+h3{
+  font-weight: bold;
+}
+
+.botones{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  background-color: #5b00a7;
+  margin: 5px;
+  border: #5b00a7;
+}

@@ -11,7 +11,7 @@
           <th>Empresa</th>
           <th>Contactado por última vez</th>
           <th>Teléfono</th>
-          <th></th>
+          <th>Modificar</th>
         </tr>
       </thead>
       <tbody>
@@ -37,10 +37,6 @@
     <div class="row">
       <div class="col-9">
         <app-form-proveedores *ngIf="!selectedProveedor" (save)="onSaveProveedor($event)"></app-form-proveedores>
-      </div>
-
-      <div class="col">
-        <button (click)="onNewProveedor()" type="button" class="btn btn-primary">Nuevo</button>
       </div>
     </div>
   </div>
