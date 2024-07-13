@@ -1,25 +1,22 @@
 import { Routes } from '@angular/router';
-
-import { authGuard, publicGuard } from './core/guards';
+import { authGuard } from './core/guards';
+import { AUTH_ROUTES } from './pages/auth/auth.routes';
 
 export const routes: Routes = [
   {
     path: '',
-    canActivate: [authGuard],
-    loadComponent: () => import('./pages/home/home.component'),
+    loadChildren: () => import('./pages/landing/landing.routes').then(m => m.LANDING_ROUTES),
   },
   {
     path: 'auth',
-    canActivate: [publicGuard],
-    children: [
-      {
-        path: 'sign-up',
-        loadComponent: () => import('./pages/auth/sign-up/sign-up.component'),
-      },
-      {
-        path: 'log-in',
-        loadComponent: () => import('./pages/auth/log-in/log-in.component'),
-      },
-    ],
+    loadChildren: () => import('./pages/auth/auth.routes').then(m => m.AUTH_ROUTES),
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.routes').then(m => m.DASHBOARD_ROUTES),
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./pages/notFound/notFound.component').then(m => m.NotFoundComponent),
   },
 ];
