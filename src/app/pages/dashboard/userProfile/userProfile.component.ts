@@ -1,6 +1,15 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { PhoneInputComponent } from 'src/app/components/common/phoneInput/phoneInput.component';
 import { NavbarComponent } from 'src/app/components/layout/navbar/navbar.component';
@@ -10,30 +19,38 @@ import { environment } from 'src/environments/environment';
 import { NgIf, NgClass } from '@angular/common';
 import { UserProfileService } from 'src/app/core/services/userProfile.service';
 import { capitalizeWords } from 'src/app/utils/utils';
+import { SidebarComponent } from 'src/app/components/layout/sidebar/sidebar.component';
+import { RouterOutlet } from '@angular/router';
 
 declare var intlTelInput: any;
 
 @Component({
   standalone: true,
   selector: 'app-user-profile',
-  imports: [NavbarComponent, ReactiveFormsModule, PhoneInputComponent, NgIf, NgClass],
+  imports: [
+    NavbarComponent,
+    SidebarComponent,
+    ReactiveFormsModule,
+    PhoneInputComponent,
+    NgIf,
+    NgClass,
+    RouterOutlet,
+  ],
   templateUrl: './userProfile.component.html',
-  styleUrls: ['./userProfile.component.scss']
+  styleUrls: ['./userProfile.component.scss'],
 })
 export class UserProfileComponent {
-
   private loginService = inject(LoginService);
   private userProfileService = inject(UserProfileService);
   private http = inject(HttpClient);
   private formBuilder = inject(FormBuilder);
-  userLoginOn:boolean = false;
-  userProfile?:UserProfile; 
-  errorMessage:String="";
+  userLoginOn: boolean = false;
+  userProfile?: UserProfile;
+  errorMessage: String = '';
   userProfileForm: FormGroup;
-  isValid:boolean=false;
+  isValid: boolean = false;
 
-  constructor(){
-
+  constructor() {
     this.userProfileForm = this.formBuilder.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
@@ -43,10 +60,10 @@ export class UserProfileComponent {
       city: ['', Validators.required],
       postalCode: ['', Validators.required],
       country: ['', Validators.required],
-    })
+    });
 
     this.loginService.userLoginOn.subscribe({
-      next:(userLoginOn) => {
+      next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
       },
       error: (errorData) => {
@@ -54,27 +71,25 @@ export class UserProfileComponent {
       },
       complete: () => {
         console.info('User Data ok');
-      }
-    })
+      },
+    });
 
     this.userProfileService.getUserProfile().subscribe({
-      next:(userData) => {
+      next: (userData) => {
         this.userProfile = userData;
         this.userProfileForm.patchValue(userData);
       },
-      error:(errorData) => {
+      error: (errorData) => {
         this.errorMessage = errorData;
       },
-      complete:() =>{
+      complete: () => {
         console.info('User Profile Data ok');
-      }
-    })
-
+      },
+    });
   }
 
-  saveUserProfile(){
-    if (this.userProfileForm.valid&&this.isValid) {
-
+  saveUserProfile() {
+    if (this.userProfileForm.valid && this.isValid) {
       const userProfileReq: UserProfile = {
         name: capitalizeWords(this.userProfileForm.value.name),
         phone: this.userProfileForm.value.phone,
@@ -84,32 +99,38 @@ export class UserProfileComponent {
         city: this.userProfileForm.value.city,
         postalCode: this.userProfileForm.value.postalCode,
         country: this.userProfileForm.value.country,
-      }
+      };
       console.log(userProfileReq);
 
       this.userProfileService.updateUserProfile(userProfileReq).subscribe({
-        next:(userData) => {
+        next: (userData) => {
           this.userProfile = userData;
           this.userProfileForm.patchValue(userData);
         },
-        error:(errorData) => {
+        error: (errorData) => {
           this.errorMessage = errorData;
         },
-        complete:() =>{
+        complete: () => {
           console.info('User Profile Data ok');
-        }
-      })
-
-    }else{
-      console.log("formulario incompleto")
+        },
+      });
+    } else {
+      console.log('formulario incompleto');
     }
-
   }
 
-  private handleError(error:HttpErrorResponse){
-    if(error.status==0)console.error('Se ha producido un error', error.error);
-    else console.error('Backend retorno el codigo de estado: ', error.status, error.error)
-    return throwError(()=> new Error('Algo fallo. Por favor intente de nuevamente.'));
+  private handleError(error: HttpErrorResponse) {
+    if (error.status == 0)
+      console.error('Se ha producido un error', error.error);
+    else
+      console.error(
+        'Backend retorno el codigo de estado: ',
+        error.status,
+        error.error
+      );
+    return throwError(
+      () => new Error('Algo fallo. Por favor intente de nuevamente.')
+    );
   }
 
   onPhoneChanged(phoneNumber: string) {
@@ -120,6 +141,7 @@ export class UserProfileComponent {
     this.isValid = isValid;
   }
 
-  get formControl() { return this.userProfileForm.controls; }
-
+  get formControl() {
+    return this.userProfileForm.controls;
+  }
 }
