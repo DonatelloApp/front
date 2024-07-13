@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
   Event,
@@ -18,10 +18,12 @@ import { filter } from 'rxjs';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
   currentRoute: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.currentRoute = this.router.url;
+  }
 
   ngOnInit(): void {
     this.router.events
