@@ -1,13 +1,15 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-logo" routerLink=""><img src="./assets/logo.png"></a>
+      <a *ngIf="!userLoginOn" class="navbar-logo" routerLink=""><img src="./assets/logo.png"></a>
+      <a *ngIf="userLoginOn" class="navbar-logo logo-dona1" routerLink=""><img src="./assets/dona1.png"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
+        
+        <ul *ngIf="!userLoginOn" class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="">INICIO</a>
+            <p class="nav-link active" aria-current="page" routerLink="">INICIO</p>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="about-us">SOBRE NOSOTROS</a>
@@ -18,6 +20,10 @@
         </ul>   
         <button *ngIf="!userLoginOn" class="btn btn-green-turtle me-2" routerLink="auth/log-in">INICIAR SESION</button>
         <button *ngIf="!userLoginOn" class="btn btn-purple-turtle" routerLink="auth/sing-in">REGISTRARSE</button>
+        
+        <div *ngIf="userLoginOn" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+          <label class="titulo-Configuracion h4 mb-0">Configuración</label>
+        </div>       
       </div>
     </div>
   </nav>
