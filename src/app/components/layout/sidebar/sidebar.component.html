@@ -1,0 +1,71 @@
+<div class="col sidebar-color">
+  <div
+    class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+  >
+    <ul
+      class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+      id="menu"
+    >
+      <li class="nav-item">
+        <a
+          class="nav-link align-middle px-0 mb-2 item-color"
+          routerLink="/dashboard/"
+          [ngClass]="{ 'item-color-selected': isRoute('/dashboard') }"
+        >
+          <i class="bi bi-grid-1x2-fill"></i>
+          <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="nav-link px-0 align-middle mb-2 item-color"
+          routerLink="/dashboard/stock"
+          [ngClass]="{ 'item-color-selected': isRoute('/dashboard/stock') }"
+        >
+          <i class="bi bi-clipboard-check-fill"></i>
+          <span class="ms-1 d-none d-sm-inline">Stock</span>
+        </a>
+      </li>
+      <li>
+        <a
+          class="nav-link px-0 align-middle mb-2 item-color"
+          routerLink="/dashboard/finance"
+          [ngClass]="{ 'item-color-selected': isRoute('/dashboard/finance') }"
+        >
+          <i class="bi bi-cash-coin"></i>
+          <span class="ms-1 d-none d-sm-inline">Finanzas</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="nav-link px-0 align-middle mb-2 item-color"
+          routerLink="/dashboard/suppliers"
+          [ngClass]="{ 'item-color-selected': isRoute('/dashboard/suppliers') }"
+        >
+          <i class="bi bi-person-lines-fill"></i>
+          <span class="ms-1 d-none d-sm-inline">Provedores</span></a
+        >
+      </li>
+    </ul>
+    <hr />
+    <div class="settings-container pb-4">
+      <ul
+        class="nav nav-pills flex-column mb-0 align-items-center align-items-sm-start"
+        id="settings-nav"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link align-middle px-0 item-color"
+            routerLink="/dashboard/user-profile"
+            [ngClass]="{
+              'item-color-selected': isRoute('/dashboard/user-profile')
+            }"
+          >
+            <i class="bi bi-gear-fill"></i>
+            <span class="ms-1 d-none d-sm-inline">Configuración</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
