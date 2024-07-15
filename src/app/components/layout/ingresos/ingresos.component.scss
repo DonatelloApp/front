@@ -8,14 +8,36 @@ div{
   border-radius: 1.5rem;
 }
 
+.top{
+  height: 45%;
+  display: flex;
+  flex-direction: row;
+  
+  margin-bottom: 0;
+  padding: 0;
+}
+
 .detalle{
   flex-direction: column;
+  width: fit-content;
+  margin: 1rem;
 }
 
 h3{
   font-weight: bold;
 }
 
+
+
 hr{
-  width: 85%;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  border-top: 3px solid var(--black);
+  border-radius: 50px;
 }
+
+.bottom{
+  height: 45%;
+}
+

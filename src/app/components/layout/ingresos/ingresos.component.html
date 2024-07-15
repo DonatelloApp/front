@@ -1,26 +1,32 @@
 <div class="card text-center m-1">
   
-  <div class="row">
+  <div class="top">
+
     <div class="col">
       <svg xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" fill="#86dfb3" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
       </svg>
+
+      <div class="detalle">
+        <p>Ingresos del dia</p>
+        <h3>{{ingresosDia | currency:'ARS':'symbol-narrow'}}</h3>  
+      </div>
     </div>
-    <div class="col">
-      <p>Ingresos del dia</p>
-      <h3>{{ingresosDia | currency:'ARS':'symbol-narrow'}}</h3>  
-    </div>
+
     <div class="col">
       <button type="button" (click)="onOpenModal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
     </div>
   </div>
+
   <hr>
 
-  <div class="row">
+  <div class="bottom">
+
     <div class="col detalle">
       <p>Ingresos de la semana</p>
       <h3>{{ingresosSemana | currency:'ARS':'symbol-narrow'}}</h3>
     </div>
+
     <div class="col detalle">
       <p>Ingresos del mes</p>
       <h3>{{ingresosMes| currency:'ARS':'symbol-narrow'}}</h3>

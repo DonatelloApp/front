@@ -1,0 +1,277 @@
+<app-navbar></app-navbar>
+<div class="d-flex content-container">
+  <app-sidebar></app-sidebar>
+  <div class="container mt-4 mb-3">
+    <div class="card">
+      <div class="card-header custom-card-header">
+        <h4 class="card-title ml-2 mb-0 mt-2">Perfil</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userProfileForm" (ngSubmit)="saveUserProfile()">
+          <div class="row">
+            <div class="col-md-auto text-center">
+              <div class="profile-photo-container mt-4">
+                <img
+                  src="assets/logo.png"
+                  class="img-fluid rounded-circle mb-3 img-background"
+                  alt="User Photo"
+                />
+                <button
+                  type="button"
+                  class="btn btn-primary rounded-circle btn-sm change-photo-btn"
+                >
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="row mt-4">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input
+                      type="text"
+                      id="name"
+                      formControlName="name"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['name'].invalid &&
+                          (formControl['name'].dirty ||
+                            formControl['name'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['name'].invalid &&
+                        (formControl['name'].dirty ||
+                          formControl['name'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm.get('name')?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="company">Nombre de la empresa</label>
+                    <input
+                      type="text"
+                      id="company"
+                      formControlName="companyName"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['companyName'].invalid &&
+                          (formControl['companyName'].dirty ||
+                            formControl['companyName'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['companyName'].invalid &&
+                        (formControl['companyName'].dirty ||
+                          formControl['companyName'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm
+                            .get('companyName')
+                            ?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <app-phone-input
+                      [initialValue]="userProfile?.phone"
+                      (phoneChanged)="onPhoneChanged($event)"
+                      (validPhoneChanged)="onValidChanged($event)"
+                    ></app-phone-input>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input
+                      type="text"
+                      id="address"
+                      formControlName="address"
+                      class="form-control"
+                      placeholder="Street, Number"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['address'].invalid &&
+                          (formControl['address'].dirty ||
+                            formControl['address'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['address'].invalid &&
+                        (formControl['address'].dirty ||
+                          formControl['address'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm.get('address')?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="other-address">Otros datos de dirección</label>
+                    <input
+                      type="text"
+                      id="other-address"
+                      formControlName="addressDetails"
+                      class="form-control"
+                      placeholder="Floor 11, Room 10"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="city">Ciudad</label>
+                    <input
+                      type="text"
+                      id="city"
+                      formControlName="city"
+                      class="form-control"
+                      placeholder="City Name"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['city'].invalid &&
+                          (formControl['city'].dirty ||
+                            formControl['city'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['city'].invalid &&
+                        (formControl['city'].dirty ||
+                          formControl['city'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm.get('city')?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="postal-code">Código postal</label>
+                    <input
+                      type="text"
+                      id="postal-code"
+                      formControlName="postalCode"
+                      class="form-control"
+                      placeholder="123123"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['postalCode'].invalid &&
+                          (formControl['postalCode'].dirty ||
+                            formControl['postalCode'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['postalCode'].invalid &&
+                        (formControl['postalCode'].dirty ||
+                          formControl['postalCode'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm
+                            .get('postalCode')
+                            ?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="country">País</label>
+                    <input
+                      type="text"
+                      id="country"
+                      formControlName="country"
+                      class="form-control"
+                      placeholder="Country Name"
+                      [ngClass]="{
+                        'is-invalid':
+                          formControl['country'].invalid &&
+                          (formControl['country'].dirty ||
+                            formControl['country'].touched)
+                      }"
+                    />
+                    <div
+                      *ngIf="
+                        formControl['country'].invalid &&
+                        (formControl['country'].dirty ||
+                          formControl['country'].touched)
+                      "
+                      class="invalid-feedback"
+                    >
+                      <div
+                        *ngIf="
+                          userProfileForm.get('country')?.hasError('required')
+                        "
+                      >
+                        Este campo es requerido.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3 text-end">
+                <div class="col">
+                  <button type="submit" class="btn btn-primary btn-save">
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
