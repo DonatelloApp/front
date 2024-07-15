@@ -91,7 +91,6 @@ export class LogInComponent {
       try {
         this.loginService.login(loginReq).subscribe({
           next: (userData)=> {
-            console.log(userData);
             const snackBarRef = this.successfulLoginSnackBar();
             snackBarRef.afterDismissed().subscribe(() => {
             this.router.navigateByUrl('/dashboard');
