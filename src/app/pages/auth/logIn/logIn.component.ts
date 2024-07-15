@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,6 +34,7 @@ interface LogInForm {
     ReactiveFormsModule,
     RouterModule,
     NgIf,
+    NgClass,
     MatSnackBarModule,
     ButtonProviders,
     HttpClientModule
@@ -80,40 +81,56 @@ export class LogInComponent {
   }
 
   async logIn(): Promise<void> {
-    if (this.form.invalid) return;
+    if (this.form.valid){
 
-    const loginReq: LoginRequest = {
-      mail: this.form.value.email || '',
-      password: this.form.value.password || '',
-    }
- 
-    try {
-      this.loginService.login(loginReq).subscribe({
-        next: (userData)=> {
-          console.log(userData);
-        },
-        error: (errorData)=> {
-          console.error(errorData); 
-        },
-        complete: () => {
-          console.info("Login completado");
-        }
-      });
-      const snackBarRef = this.openSnackBar();
-
-     /* snackBarRef.afterDismissed().subscribe(() => {
-        this.router.navigateByUrl('/');
-      });*/
-    } catch (error) {
-      console.error(error);
+      const loginReq: LoginRequest = {
+        mail: this.form.value.email || '',
+        password: this.form.value.password || '',
+      }
+  
+      try {
+        this.loginService.login(loginReq).subscribe({
+          next: (userData)=> {
+            console.log(userData);
+            const snackBarRef = this.successfulLoginSnackBar();
+            snackBarRef.afterDismissed().subscribe(() => {
+            this.router.navigateByUrl('/dashboard');
+            });
+          },
+          error: (errorData)=> {
+            console.error(errorData); 
+            const snackBarRef = this.failedLoginSnackBar();
+          },
+          complete: () => {
+            console.info("Login completado");
+          }
+        });
+        
+      } catch (error) {
+        console.error(error);
+      }
+    }else {
+      console.log('formulario incompleto');
     }
   }
 
-  openSnackBar() {
-    return this._snackBar.open('Succesfully Log in 😀', 'Close', {
-      duration: 2500,
+  successfulLoginSnackBar() {
+    return this._snackBar.open('Log in Exitoso', 'Close', {
+      duration: 2000,
       verticalPosition: 'top',
       horizontalPosition: 'end',
     });
+  }
+
+  failedLoginSnackBar() {
+    return this._snackBar.open('Log in Fallido. Por favor revise las credenciales.', 'Close', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'end',
+    });
+  }
+
+  get formControl() {
+    return this.form.controls;
   }
 }

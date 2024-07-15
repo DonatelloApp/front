@@ -12,37 +12,39 @@
           <form class="form-login" [formGroup]="form" (ngSubmit)="logIn()">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" formControlName="email" />
+              <input type="email" class="form-control" formControlName="email" [ngClass]="{
+                'is-invalid':
+                  formControl['email'].invalid &&
+                  (formControl['email'].dirty ||
+                    formControl['email'].touched)
+                }"
+              />
               <div class="invalid-feedback" *ngIf="isEmailValid as messsage">{{ messsage }}</div>
             </div>
 
             <div class="form-group">
               <label for="password">Password</label>
-              <input
-                type="{{ hide ? 'password' : 'text' }}"
-                class="form-control"
-                formControlName="password"
-              />
-              <button
-                class="btn btn-secondary"
-                (click)="hide = !hide"
-                [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide"
-              >
-                <i class="fas {{ hide ? 'fa-eye-slash' : 'fa-eye' }}"></i>
-              </button>
-              <div class="invalid-feedback">This field is required</div>
+              <div class="input-group">
+                <input type="password" class="form-control rounded password-input" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <div class="input-group-append">
+                    <button class="btn btn-primary show-password-botton rounded-circle" type="button" (click)="hide = !hide">
+                      <i class="bi bi-eye" *ngIf="hide"></i>
+                      <i class="bi bi-eye-slash" *ngIf="!hide"></i>
+                    </button>  
+                </div>
+              </div>
+              <div class="invalid-feedback">Este campo es requerido</div>
             </div>
 
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-login">Iniciar sesión</button>
             </div>
           </form>
-          <hr />
+          
           <app-button-providers [isLogin]="true" />
           <p class="small-text log-in-redirect">
             ¿Aún no tienes cuenta?
-            <a class="registry-link" routerLink="/auth/register/">Regístrate.</a>
+            <a class="registry-link" routerLink="/auth/sing-in/">Regístrate.</a>
           </p>
         </div>
       </div>
