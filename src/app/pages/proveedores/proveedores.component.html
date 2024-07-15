@@ -1,48 +1,59 @@
-<section>
-  <h2>Agenda de Proveedores</h2>
-  <hr>
+<app-navbar></app-navbar>
+<div class="d-flex content-container">
+  <app-sidebar></app-sidebar>
+  <div class="container mt-4 mb-3">
 
- 
-    <table class="fondo table">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Empresa</th>
-          <th>Contactado por última vez</th>
-          <th>Teléfono</th>
-          <th>Modificar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let prov of proveedores">
-          <td>{{prov.id}}</td>
-          <td>{{prov.nombre}}</td>
-          <td>{{prov.empresa}}</td>
-          <td>{{prov.contacto}}</td>
-          <td>{{prov.telefono}}</td>
-          <td><button type="button" (click)="onEditProveedor(prov)" data-bs-toggle="modal" data-bs-target="#modalModificar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#5b00a7" class="bi bi-pencil-square" viewBox="0 0 16 16">
-              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-            </svg>
-          </button></td>
-          
-        </tr>
-      </tbody>
-    </table>
-  
-
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
-        <app-form-proveedores *ngIf="!selectedProveedor" (save)="onSaveProveedor($event)"></app-form-proveedores>
+    <section>
+      <h2>Agenda de Proveedores</h2>
+      <hr>
+    
+     
+        <table class="fondo table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Empresa</th>
+              <th>Contactado por última vez</th>
+              <th>Teléfono</th>
+              <th>Modificar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prov of proveedores">
+              <td>{{prov.id}}</td>
+              <td>{{prov.nombre}}</td>
+              <td>{{prov.empresa}}</td>
+              <td>{{prov.contacto}}</td>
+              <td>{{prov.telefono}}</td>
+              <td><button type="button" (click)="onEditProveedor(prov)" data-bs-toggle="modal" data-bs-target="#modalModificar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#5b00a7" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                </svg>
+              </button></td>
+              
+            </tr>
+          </tbody>
+        </table>
+      
+    
+      <div class="container">
+        <div class="row">
+          <div class="col-9">
+            <app-form-proveedores *ngIf="!selectedProveedor" (save)="onSaveProveedor($event)"></app-form-proveedores>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  
-</section>
+      
+    </section>
 
-<app-modal *ngIf="selectedProveedor" title="Modificar proveedor" (close)="selectedProveedor = null">
-  <app-form-proveedores [proveedor]="selectedProveedor" (save)="onSaveProveedor($event)"></app-form-proveedores>
-</app-modal>
+    <app-modal *ngIf="selectedProveedor" title="Modificar proveedor" (close)="selectedProveedor = null">
+      <app-form-proveedores [proveedor]="selectedProveedor" (save)="onSaveProveedor($event)"></app-form-proveedores>
+    </app-modal>
+
+  </div>
+</div>
+
+
+

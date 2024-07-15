@@ -5,11 +5,13 @@ import { ProveedoresService } from './../../core/services/proveedores.service'
 import { Proveedor } from 'src/app/core/models/proveedor';
 import { FormProveedoresComponent } from 'src/app/components/form-proveedores/form-proveedores.component';
 import { ModalComponent } from 'src/app/components/common/modal/modal.component';
+import { NavbarComponent } from "../../components/layout/navbar/navbar.component";
+import { SidebarComponent } from "../../components/layout/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-proveedores',
   standalone:true,
-  imports:[CommonModule,ReactiveFormsModule,FormProveedoresComponent,ModalComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormProveedoresComponent, ModalComponent, NavbarComponent, SidebarComponent],
   templateUrl: './proveedores.component.html',
   styleUrls: ['./proveedores.component.scss']
 })
