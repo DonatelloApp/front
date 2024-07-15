@@ -1,0 +1,33 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+ 
+    <div>
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name" type="text" />
+    </div>
+    <div>
+      <label for="price">Precio:</label>
+      <input id="price" formControlName="price" type="text" />
+    </div>
+    <div>
+      <label for="measure">Medida:</label>
+      <select id="measure" formControlName="measure">
+        <option value="kg">Kg</option>
+        <option value="lt">Lt</option>
+        <option value="unit">Unidad</option>
+      </select>
+    </div>
+    <div>
+      <label for="quantity">Cantidad:</label>
+      <input id="quantity" formControlName="quantity" type="number" />
+    </div>
+    <div>
+      <label for="minQuantity">Cantidad Mínima:</label>
+      <input id="minQuantity" formControlName="minQuantity" type="number" />
+    </div>
+    <div>
+      <label for="supplier">Proveedor:</label>
+      <input id="supplier" formControlName="supplier" type="text" />
+    </div>
+    <button type="submit">Agregar Producto</button>
+  </form>
+  
