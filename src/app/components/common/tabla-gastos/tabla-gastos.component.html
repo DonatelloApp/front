@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table">
+   
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Destinatario</th>
+        <th>Monto</th>
+        <th>Vencimiento</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let gasto of gastos">
+        <td>{{gasto.id}}</td>
+        <td>{{gasto.destinatario}}</td>
+        <td>{{gasto.monto}}</td>
+        <td>{{gasto.vencimiento}}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+</div>

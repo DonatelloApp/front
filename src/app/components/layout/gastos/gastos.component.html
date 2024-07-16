@@ -1,0 +1,61 @@
+
+
+<div class="tarjeta card m-1">
+  
+  <div class="head">
+    <div class="flecha">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ff9e9e" class="bi bi-arrow-down-circle-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+      </svg>
+    </div>
+    <div class="descripcion">
+      <p>Gastos del mes</p>
+      <h3>$24.650</h3>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="body-table">
+    <div class="col">
+      <div class="container p-table">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" >Motivo</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Vencimiento</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr *ngFor="let gasto of gastos">
+              <td>{{gasto.motivo}}</td>
+              <td>{{gasto.monto}}</td>
+              <td>{{gasto.vencimiento}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+     
+    </div>
+  </div>
+
+  <div class="botones row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="onModalTablaTrue()" >Ver todos los gastos</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary" (click)="onModalAgregarTrue()">Cargar un gasto</button></div>
+  </div>
+
+  <app-modal *ngIf="modalTabla"  title="Gastos" (close)="onModalTablaFalse()">
+    <app-tabla-gastos></app-tabla-gastos>
+  </app-modal>
+
+  <app-modal *ngIf="modalAgregar" title="Agregar un gasto" (close)="onModalAgregarFalse()">
+    <app-form-agregar-gasto></app-form-agregar-gasto>
+  </app-modal>
+</div>

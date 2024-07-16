@@ -32,6 +32,12 @@ td{
   background-color: var(--white);
 }
 
+.guardar{
+  display: flex;
+  justify-content:end;
+  align-items: end;
+}
+
 .conenedor-tabla{
   background-color: #060215;
   padding: 0 2rem 0 2rem;
