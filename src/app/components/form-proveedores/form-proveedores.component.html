@@ -1,0 +1,99 @@
+<form
+  class="container"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  [formGroup]="formulario"
+  name="prov-form"
+>
+  <div class="row">
+    <div class="col">
+      <label class="form-label" for="nombre">Nombre</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Proveedor"
+          formControlName="name"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['name'].errors &&
+            formulario.controls['name'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="form-label" for="empresa">Empresa</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre de la Empresa"
+          formControlName="companyName"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['companyName'].errors &&
+            formulario.controls['companyName'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="form-label" for="contacto">Ultimo Contacto</label>
+      <div>
+        <input
+          class="form-control"
+          type="date"
+          placeholder="dd/mm/aaaa"
+          formControlName="lastContact"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['lastContact'].errors &&
+            formulario.controls['lastContact'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col">
+      <label class="form-label" for="telefono">Telefono</label>
+      <div>
+        <input
+          class="form-control"
+          type="tel"
+          placeholder="Número"
+          formControlName="phone"
+        />
+        <span
+          class="invalid-feedback"
+          *ngIf="
+            formulario.controls['phone'].errors &&
+            formulario.controls['phone'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col guardar">
+      <div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</form>

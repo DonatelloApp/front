@@ -14,12 +14,12 @@ export const DASHBOARD_ROUTES: Routes = [
     {
         path: 'finance',
         //modificar ruta componente cuando se termine
-        loadComponent: () => import('./userProfile/userProfile.component').then(m => m.UserProfileComponent),
+        loadComponent: () => import('./../finanzas/finanzas.component').then(m => m.FinanzasComponent),
     },
     {
         path: 'suppliers',
         //modificar ruta componente cuando se termine
-        loadComponent: () => import('./userProfile/userProfile.component').then(m => m.UserProfileComponent),
+        loadComponent: () => import('./../proveedores/proveedores.component').then(m => m.ProveedoresComponent),
     },
     {
         path: 'user-profile',

@@ -1,0 +1,24 @@
+<form class="container" (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="formulario" name="prov-form">
+  <div class="row"><h3>Agregar un ingreso</h3></div>
+  
+  <div class="row">
+    <label class="form-label" for="monto">Monto</label>
+    <input class="form-control" type="number" name="monto" placeholder="4.500" formControlName="monto">
+    <span class="form-text" *ngIf="formulario.controls['monto'].errors && formulario.controls['monto'].touched">
+      Campo Requerido
+    </span>
+  </div>
+
+  <div class="row">
+    <label class="form-label" for="fecha">Fecha</label>
+    <input class="form-control" type="date" placeholder="dd/mm/aaaa" formControlName="fecha">
+        <span class="form-text" *ngIf="formulario.controls['fecha'].errors && formulario.controls['fecha'].touched">
+          Campo Requerido
+        </span>
+  </div>
+
+  <div class="row">
+    <button class="btn btn-primary" type="submit">Agregar</button>
+  </div>
+
+</form>
