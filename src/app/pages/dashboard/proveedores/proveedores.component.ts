@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProveedoresService } from './../../core/services/proveedores.service';
+import { ProveedoresService } from '../../../core/services/proveedores.service';
 import { Proveedor } from 'src/app/core/models/proveedor';
 import { FormProveedoresComponent } from 'src/app/components/form-proveedores/form-proveedores.component';
 import { ModalComponent } from 'src/app/components/common/modal/modal.component';
-import { NavbarComponent } from '../../components/layout/navbar/navbar.component';
-import { SidebarComponent } from '../../components/layout/sidebar/sidebar.component';
+import { NavbarComponent } from '../../../components/layout/navbar/navbar.component';
+import { SidebarComponent } from '../../../components/layout/sidebar/sidebar.component';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
