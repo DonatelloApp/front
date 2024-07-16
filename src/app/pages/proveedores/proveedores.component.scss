@@ -32,11 +32,13 @@ section{
 .table{
   background-color: var(--white);
 }
-th{
+.table th{
   background-color: var(--white);
+  text-align: center;
 }
-td{
+.table td{
   background-color: var(--white);
+  text-align: center;
 }
 
 .conenedor-tabla{
