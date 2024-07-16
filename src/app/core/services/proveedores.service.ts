@@ -1,175 +1,100 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Proveedor } from '../models/proveedor';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  Subject,
+  tap,
+  throwError,
+} from 'rxjs';
+import { LoginService } from './login.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProveedoresService {
+  private loginService = inject(LoginService);
+  private http = inject(HttpClient);
+  userLoginOn: boolean = false;
+  proveedores: BehaviorSubject<Proveedor[]> = new BehaviorSubject<Proveedor[]>(
+    []
+  );
+  errorMessage: String = '';
 
-  proveedores:Proveedor[] = [
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
-    },
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
-    },
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
-    },
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
-    },
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
-    },
-    {
-      id:1,
-      nombre:'aaa',
-      empresa:'aaa',
-      contacto:'11/11/2020',
-      telefono:111
-    },
-    {
-      id:2,
-      nombre:'bbb',
-      empresa:'bbb',
-      contacto:'22/11/2020',
-      telefono:222
-    },
-    {
-      id:3,
-      nombre:'ccc',
-      empresa:'ccc',
-      contacto:'1/12/2020',
-      telefono:333
+  constructor() {
+    this.loginService.userLoginOn.subscribe({
+      next: (userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      },
+      error: (errorData) => {
+        this.errorMessage = errorData;
+      },
+      complete: () => {
+        console.info('User Data ok');
+      },
+    });
+  }
+
+  getProveedores(): Observable<Proveedor[]> {
+    return this.http.get<Proveedor[]>(environment.urlApi + '/providers').pipe(
+      tap((userData) => {
+        this.proveedores.next(userData);
+      }),
+      map((userData) => userData),
+      catchError(this.handleError)
+    );
+  }
+
+  addProveedor(proveedor: Proveedor): Observable<Proveedor> {
+    return this.http
+      .post<Proveedor>(environment.urlApi + '/providers', proveedor)
+      .pipe(
+        tap((userData) => {
+          const proveedoresActuales = this.proveedores.getValue();
+          proveedoresActuales.push(userData);
+          this.proveedores.next(proveedoresActuales);
+        }),
+        map((userData) => userData),
+        catchError(this.handleError)
+      );
+  }
+
+  updateProveedor(proveedor: Proveedor) {
+    return this.http
+      .put<Proveedor>(
+        environment.urlApi + '/providers/' + proveedor.id,
+        proveedor
+      )
+      .pipe(
+        tap((userData) => {
+          const proveedoresActuales = this.proveedores.getValue();
+          const indiceProveedor = proveedoresActuales.findIndex(
+            (proveedorInArray) => proveedorInArray.id == proveedor.id
+          );
+          proveedoresActuales[indiceProveedor] = userData;
+          this.proveedores.next(proveedoresActuales);
+        }),
+        map((userData) => userData),
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('se ha producido un error', error);
+    } else {
+      console.error(
+        'Backend retorno el codigo de estado: ',
+        error.status,
+        error.error
+      );
     }
-  ]
-
-  apiUrl = '';
-  
-  constructor( private http: HttpClient) { }
-
-  getProveedorById(id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return throwError(
+      () => new Error('Algo fallo. Por favor intente de nuevo')
+    );
   }
-
-  createProveedor(product: any): Observable<any> {
-    return this.http.post(this.apiUrl, product);
-  }
-
-  updateProveedor(id: string, product: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, product);
-  }
-
-
-  getProveedores(){
-    return this.proveedores;
-  }
-
-  getProveedorId(id:number){
-    return this.proveedores.find((m)=>{
-      return m.id==id;
-    })
-  }
-
-  postProveedor(nuevo:Proveedor){
-    this.proveedores.push(nuevo);
-  }
-
-  modificarProveedor(nuevo:Proveedor){
-    console.log("Modificar:",nuevo);
-  }
-
 }
