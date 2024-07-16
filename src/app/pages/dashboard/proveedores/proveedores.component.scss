@@ -1,53 +1,56 @@
-:root{
-  --black:#060215;
-  --gray100:#e6e5e5;
-  --gray300:#c2bdbd;
-  --white:#f8f8f8;
+:root {
+  --black: #060215;
+  --gray100: #e6e5e5;
+  --gray300: #c2bdbd;
+  --white: #f8f8f8;
 
-  --greenTurtle:#018744;
-  --purpleTurtle:#5b00a7;
-  --redTurtle:#e93c3c;
+  --greenTurtle: #018744;
+  --purpleTurtle: #5b00a7;
+  --redTurtle: #e93c3c;
 
-  --greenLight:#86dfb3;
-  --purpleLight:#ceb2e6;
-  --redLight:#ff9e9e;
+  --greenLight: #86dfb3;
+  --purpleLight: #ceb2e6;
+  --redLight: #ff9e9e;
 }
 
-button{
+button {
   background-color: var(--white);
   border: none;
   text-decoration: none;
   cursor: pointer;
 }
 
-section{
+.content-container {
   background-color: var(--gray100);
-  padding: 2rem;
 }
 
-.fondo{
+.title {
+  font-weight: 600;
+}
+
+.fondo {
   background-color: var(--white);
 }
 
-.table{
+.table {
   background-color: var(--white);
 }
-.table th{
+.table th {
   background-color: var(--white);
   text-align: center;
 }
-.table td{
+.table td {
   background-color: var(--white);
   text-align: center;
 }
 
-.conenedor-tabla{
+.conenedor-tabla {
   background-color: #060215;
   padding: 0 2rem 0 2rem;
   margin: 2rem;
 }
 
-.p-table{
+.p-table {
   max-height: 60vh;
   overflow: scroll;
 
@@ -56,23 +59,22 @@ section{
   border-radius: 32px;
 }
 
-
-.container{
+.container {
   margin-top: 2rem;
 }
 
-label{
+label {
   margin-left: 5px;
 }
 
-.boton{
+.boton {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: end;
   justify-content: center;
 }
-.btn-primary{
-  background-color:var(--purpleTurtle);
+.btn-primary {
+  background-color: var(--purpleTurtle);
   border-color: var(--purpleTurtle);
 }

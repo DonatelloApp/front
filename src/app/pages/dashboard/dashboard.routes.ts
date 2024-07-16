@@ -18,8 +18,7 @@ export const DASHBOARD_ROUTES: Routes = [
     },
     {
         path: 'suppliers',
-        //modificar ruta componente cuando se termine
-        loadComponent: () => import('./../proveedores/proveedores.component').then(m => m.ProveedoresComponent),
+        loadComponent: () => import('./proveedores/proveedores.component').then(m => m.ProveedoresComponent),
     },
     {
         path: 'user-profile',
