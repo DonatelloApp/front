@@ -34,13 +34,13 @@
           class="form-control"
           type="text"
           placeholder="Nombre de la Empresa"
-          formControlName="companyName"
+          formControlName="company"
         />
         <span
           class="form-text"
           *ngIf="
-            formulario.controls['companyName'].errors &&
-            formulario.controls['companyName'].touched
+            formulario.controls['company'].errors &&
+            formulario.controls['company'].touched
           "
         >
           Campo Requerido
@@ -76,13 +76,13 @@
           class="form-control"
           type="tel"
           placeholder="Número"
-          formControlName="phone"
+          formControlName="contact"
         />
         <span
           class="invalid-feedback"
           *ngIf="
-            formulario.controls['phone'].errors &&
-            formulario.controls['phone'].touched
+            formulario.controls['contact'].errors &&
+            formulario.controls['contact'].touched
           "
         >
           Campo Requerido

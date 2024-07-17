@@ -32,9 +32,9 @@ export class FormProveedoresComponent implements OnChanges {
   constructor(private fb: FormBuilder) {
     this.formulario = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      companyName: ['', [Validators.required]],
+      company: ['', [Validators.required]],
       lastContact: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
+      contact: ['', [Validators.required]],
     });
   }
 
@@ -48,9 +48,9 @@ export class FormProveedoresComponent implements OnChanges {
     if (this.formulario.valid) {
       const proveedorReq: Proveedor = {
         name: capitalizeWords(this.formulario.value.name),
-        phone: this.formulario.value.phone,
-        companyName: '',
-        lastContact: '',
+        contact: this.formulario.value.contact,
+        company: this.formulario.value.company,
+        lastContact: new Date(this.formulario.value.lastContact),
       };
 
       if (this.proveedor) proveedorReq.id = this.proveedor.id;
