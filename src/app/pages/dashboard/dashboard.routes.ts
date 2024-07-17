@@ -13,8 +13,7 @@ export const DASHBOARD_ROUTES: Routes = [
     },
     {
         path: 'finance',
-        //modificar ruta componente cuando se termine
-        loadComponent: () => import('./../finanzas/finanzas.component').then(m => m.FinanzasComponent),
+        loadComponent: () => import('./finanzas/finanzas.component').then(m => m.FinanzasComponent),
     },
     {
         path: 'suppliers',

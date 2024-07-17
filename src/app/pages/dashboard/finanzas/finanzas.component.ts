@@ -4,8 +4,8 @@ import { GananciasComponent } from 'src/app/components/layout/ganancias/ganancia
 import { GastosComponent } from 'src/app/components/layout/gastos/gastos.component';
 import { IngresosComponent } from 'src/app/components/layout/ingresos/ingresos.component';
 import { LimiteGastosComponent } from 'src/app/components/layout/limite-gastos/limite-gastos.component';
-import { NavbarComponent } from "../../components/layout/navbar/navbar.component";
-import { SidebarComponent } from "../../components/layout/sidebar/sidebar.component";
+import { NavbarComponent } from "../../../components/layout/navbar/navbar.component";
+import { SidebarComponent } from "../../../components/layout/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-finanzas',
