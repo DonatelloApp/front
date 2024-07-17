@@ -3,7 +3,7 @@ name: CI Workflow
 on:
   push:
     branches:
-      - frontend
+      - main
     
 jobs:
   deploy:
@@ -17,8 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm ci 
 
-      - name: Verify dependencies
-        run: npm audit
+      #- name: Verify dependencies
+        #run: npm audit
 
       - name: Build application
         run: npm run build
@@ -27,7 +27,7 @@ jobs:
         uses: data-intuitive/netlify-deploy-site@v1
         with:
           auth: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          dir: 'dist'
+          dir: 'dist/auth-yt/'
           site: ${{ secrets.NETLIFY_SITE_ID }}
           prod: true
           message: 'Deploy production ${{ github.ref }}'

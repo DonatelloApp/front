@@ -1,0 +1,53 @@
+.container{
+  background-color: #c2bdbd;
+}
+
+.row{
+  margin: 0;
+  padding: 0;
+}
+.col{
+  margin: 0;
+  padding: 0;
+}
+
+.col-8{
+  margin: 0;
+  padding: 0;
+}
+
+app-ingresos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+app-ganancias{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+app-gastos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+main{
+  margin: 0;
+  padding: 0;
+}
+aside{
+  margin: 0;
+  padding: 0;
+}
+section{
+  margin: 0;
+  padding: 0;
+}
+
