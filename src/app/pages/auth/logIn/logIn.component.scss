@@ -66,13 +66,10 @@
   border-color: black;
 }
 
-.btn {
-  width: 100%;
-}
-
 .btn-login{
   background-color: #5B00A7;
   border-color: #5B00A7;
+  width: 100%;
 }
 
 .small-text {
@@ -87,4 +84,19 @@
   color: #5B00A7;
   font-weight: bold;
   text-decoration: none;
+}
+
+.password-input{
+  padding-right: 55px !important; 
+}
+
+.show-password-botton {
+  position: absolute;
+  right: 3px; 
+  top: 3px;
+  bottom: 3px;
+  line-height: 1 !important;
+  z-index: 4;
+  background-color: #5B00A7;
+  border-color: #5B00A7;
 }

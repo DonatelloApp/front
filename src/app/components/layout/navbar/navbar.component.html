@@ -21,9 +21,31 @@
         <button *ngIf="!userLoginOn" class="btn btn-green-turtle me-2" routerLink="auth/log-in">INICIAR SESION</button>
         <button *ngIf="!userLoginOn" class="btn btn-purple-turtle" routerLink="auth/sing-in">REGISTRARSE</button>
         
-        <div *ngIf="userLoginOn" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+
+        <div *ngIf="userLoginOn && isRoute('/dashboard')" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+          <label class="titulo-Configuracion h4 mb-0">Dashboard</label>
+        </div>     
+        <div *ngIf="userLoginOn && isRoute('/dashboard/stock')" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+          <label class="titulo-Configuracion h4 mb-0">Stock</label>
+        </div>     
+        <div *ngIf="userLoginOn && isRoute('/dashboard/finance')" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+          <label class="titulo-Configuracion h4 mb-0">Finanzas y Costos</label>
+        </div>     
+        <div *ngIf="userLoginOn && isRoute('/dashboard/suppliers')" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
+          <label class="titulo-Configuracion h4 mb-0">Provedores</label>
+        </div>     
+        <div *ngIf="userLoginOn && isRoute('/dashboard/user-profile')" class="titulo-dashboard d-flex align-items-center ml-auto ms-4">
           <label class="titulo-Configuracion h4 mb-0">Configuración</label>
         </div>       
+
+        <div *ngIf="userLoginOn" class="dropdown ms-auto">
+          <button class="btn dropdown-toggle rounded-circle btn-user" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/user-logo.png" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li><a class="dropdown-item" (click)="logOut()">Cerrar sesión</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
