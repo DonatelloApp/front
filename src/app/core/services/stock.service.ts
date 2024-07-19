@@ -1,23 +1,28 @@
 import { inject, Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  tap,
+  throwError,
+} from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StockService {
   private loginService = inject(LoginService);
   private http = inject(HttpClient);
   userLoginOn: boolean = false;
-  products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(
-    []
-  );
+  products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   errorMessage: String = '';
 
-  constructor() { 
+  constructor() {
     this.loginService.userLoginOn.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
@@ -57,10 +62,7 @@ export class StockService {
 
   updateProduct(product: Product) {
     return this.http
-      .put<Product>(
-        environment.urlApi + '/inventory/' + product.id,
-        product
-      )
+      .put<Product>(environment.urlApi + '/inventory/' + product.id, product)
       .pipe(
         tap((userData) => {
           const currentProducts = this.products.getValue();
