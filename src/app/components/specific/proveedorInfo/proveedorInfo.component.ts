@@ -1,14 +1,21 @@
-import { Component, inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Proveedor } from 'src/app/core/models/proveedor';
 import { ProveedoresService } from 'src/app/core/services/proveedores.service';
 
 @Component({
   selector: 'app-proveedor-info',
-  standalone:true,
+  standalone: true,
   templateUrl: './proveedorInfo.component.html',
-  styleUrls: ['./proveedorInfo.component.scss']
+  styleUrls: ['./proveedorInfo.component.scss'],
 })
-export class ProveedorInfoComponent implements OnInit{
+export class ProveedorInfoComponent implements OnInit {
   private provService = inject(ProveedoresService);
   @Input() proveedorId: number | undefined;
   name: string | undefined = undefined;
@@ -17,13 +24,15 @@ export class ProveedorInfoComponent implements OnInit{
   proveedores: Proveedor[] = [];
   errorMessage: String = '';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.provService.getProveedores().subscribe({
       next: (userData) => {
         this.proveedores = userData;
-        const proveedor: Proveedor | undefined = this.proveedores.find((proveedor)=>proveedor.id === this.proveedorId);
+        const proveedor: Proveedor | undefined = this.proveedores.find(
+          (proveedor) => proveedor.id === this.proveedorId
+        );
         this.name = proveedor?.name;
         this.company = proveedor?.company;
         this.phone = proveedor?.contact;
@@ -36,5 +45,4 @@ export class ProveedorInfoComponent implements OnInit{
       },
     });
   }
-
 }
