@@ -2,8 +2,6 @@
 <div class="d-flex content-container">
   <app-sidebar></app-sidebar>
   <div class="container mt-4 mb-3">
-
-
     <label class="title mb-2">Control de inventario</label>
 
     <table class="fondo table">
@@ -14,7 +12,7 @@
           <th scope="col">Precio</th>
           <th scope="col">Medida</th>
           <th scope="col">Cantidad</th>
-          <th scope="col">Proveedor</th>      
+          <th scope="col">Proveedor</th>
           <th scope="col">Modificar</th>
         </tr>
       </thead>
@@ -68,10 +66,12 @@
 
     <div class="container">
       <div class="row">
-        <!--<div class="col-9">-->
-          <app-product-form class="ps-0 pe-0" [insideModal]="false" *ngIf="!selectedProduct"
-          (save)="onSaveProduct($event)"></app-product-form>
-        <!--</div>-->
+        <app-product-form
+          class="ps-0 pe-0"
+          [insideModal]="false"
+          *ngIf="!selectedProduct"
+          (save)="onSaveProduct($event)"
+        ></app-product-form>
       </div>
     </div>
 
@@ -96,10 +96,5 @@
         [proveedorId]="selectedProveedor"
       ></app-proveedor-info>
     </app-modal>
-
-
-
-
-  
-</div>
+  </div>
 </div>

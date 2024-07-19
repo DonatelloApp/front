@@ -14,7 +14,15 @@ import { ProveedorInfoComponent } from 'src/app/components/specific/proveedorInf
 @Component({
   selector: 'app-stock',
   standalone: true,
-  imports: [CommonModule, ProductFormComponent, ProveedorInfoComponent, NavbarComponent, SidebarComponent, ModalComponent, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ProductFormComponent,
+    ProveedorInfoComponent,
+    NavbarComponent,
+    SidebarComponent,
+    ModalComponent,
+    ReactiveFormsModule,
+  ],
   templateUrl: './stock.component.html',
   styleUrls: ['./stock.component.scss'],
 })
