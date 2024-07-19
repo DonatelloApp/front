@@ -9,7 +9,7 @@ export const DASHBOARD_ROUTES: Routes = [
     {
         path: 'stock',
         //modificar ruta componente cuando se termine
-        loadComponent: () => import('./inProgress/in-progress.component').then(m => m.InProgressComponent),
+        loadComponent: () => import('./stock/stock.component').then(m => m.StockComponent),
     },
     /*{
         path: 'finance',

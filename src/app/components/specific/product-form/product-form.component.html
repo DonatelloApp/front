@@ -1,0 +1,145 @@
+<form
+  class="container ps-0 pe-0"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  [formGroup]="productForm"
+  name="prod-form"
+  id="prodForm"
+>
+  <div class="row g-3">
+    <div [ngClass]="isInsideModal() ? 'col col-md-5' : 'col-12 col-md-3'">
+      <label class="form-label" for="name">Nombre</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre del producto"
+          formControlName="name"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            productForm.controls['name'].errors &&
+            productForm.controls['name'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-4' : 'col-12 col-md-3'">
+      <label class="form-label" for="price">Precio</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="1.00"
+          formControlName="price"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            productForm.controls['price'].errors &&
+            productForm.controls['price'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+      <label class="form-label" for="unit">Medida</label>
+      <div>
+        <select class="form-select" formControlName="unit">
+          <option value="" disabled selected>-</option>
+          <option value="Kg" selected>Kg</option>
+          <option value="Un" selected>Un</option>
+          <option value="Lt" selected>Lt</option>
+        </select>
+        <span
+          class="form-text"
+          *ngIf="
+            productForm.controls['unit'].errors &&
+            productForm.controls['unit'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+      <label class="form-label" for="stock">Cantidad</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Cantidad Total"
+          formControlName="stock"
+        />
+        <span
+          class="invalid-feedback"
+          *ngIf="
+            productForm.controls['stock'].errors &&
+            productForm.controls['stock'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+      <label class="form-label" for="minStock">Cant. Mínima</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Cantidad mínima"
+          formControlName="minStock"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            productForm.controls['minStock'].errors &&
+            productForm.controls['minStock'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="isInsideModal() ? 'col col-md-6' : 'col-12 col-md-3'"
+      *ngIf="!isInsideModal()"
+    >
+      <label class="form-label" for="supplier">Proveedor</label>
+      <div>
+        <select class="form-select" formControlName="supplier">
+          <option value="" disabled selected>-</option>
+          <option *ngFor="let prov of proveedores" value="{{ prov.id }}">
+            {{ prov.name }}/{{ prov.company }}
+          </option>
+        </select>
+        <span
+          class="form-text"
+          *ngIf="
+            productForm.controls['supplier'].errors &&
+            productForm.controls['supplier'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12 guardar">
+      <div>
+        <button class="btn btn-primary" type="submit">Añadir</button>
+      </div>
+    </div>
+  </div>
+</form>
