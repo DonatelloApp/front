@@ -3,12 +3,12 @@ import { ModalComponent } from '../../common/modal/modal.component';
 import { Ingreso } from 'src/app/core/models/ingreso';
 import { FormAgregarIngresoComponent } from "../../common/form-agregar-ingreso/form-agregar-ingreso.component";
 import { FinanzasService } from 'src/app/core/services/finanzas.service';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-ingresos',
   standalone:true,
-  imports: [ModalComponent, FormAgregarIngresoComponent,CurrencyPipe],
+  imports: [ModalComponent, FormAgregarIngresoComponent,CurrencyPipe,CommonModule],
   templateUrl: './ingresos.component.html',
   styleUrls: ['./ingresos.component.scss']
 })
@@ -19,7 +19,7 @@ export class IngresosComponent {
   ingresosMes:number =0;
 
   ingreso:Ingreso | null = null;
-  modal:Boolean = false;
+  modalIngreso:Boolean = false;
 
   constructor( private finanzasServ:FinanzasService){
 
@@ -29,11 +29,13 @@ export class IngresosComponent {
     this.loadIngreso();
   }
 
-  onCloseModal(){
-    this.modal = false;
+  onModalFalse(){
+    console.log("cerrando modal");
+    this.modalIngreso = false;
   }
-  onOpenModal(){
-    this.modal = true;
+  onModalTrue(){
+    console.log("abriendo modal");
+    this.modalIngreso = true;
   }
 
   loadIngreso(){
@@ -42,10 +44,4 @@ export class IngresosComponent {
     this.ingresosMes = this.finanzasServ.getIngresosMes();
   }
 
-  onSaveIngreso(ingreso: Ingreso){
-    this.finanzasServ.agregarIngreso(ingreso);
-    this.loadIngreso();
-    this.ingreso = null;
-    this.modal = false;
-  }
 }

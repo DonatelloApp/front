@@ -1,0 +1,46 @@
+<form class="container" (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="formulario">
+
+  <div class="row">
+    <input 
+      type="text" 
+      class="form-control" 
+      name="producto" 
+      placeholder="Nombre del producto" 
+      formControlName="producto">
+      
+  </div>
+
+  <div class="row">
+    <select class="form-select" name="ingrediente" formControlName="ingrediente">
+      
+      <option selected>Selecciona ingrediente</option>
+
+      <option value="harina">Harina</option>
+      <option value="muzzarella">Muzzarella</option>
+      <option value="tomate">Tomate</option>
+    
+    </select>
+  </div>
+
+  <div class="row">
+    <input 
+      type="number"
+      class="form-control"
+      name="cantidad"
+      placeholder="Ingresa la cantidad"
+      formControlName="cantidad"
+    >
+  </div>
+
+  <div class="row">
+    <select class="form-select" name="medida" formControlName="medida">
+
+      <option value="unidad">un</option>
+      <option value="gramo">gr</option>
+      <option value="litro">lt</option>
+
+    </select>
+  </div>
+
+
+</form>

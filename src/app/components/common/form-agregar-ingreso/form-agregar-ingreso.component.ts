@@ -12,9 +12,6 @@ import { Ingreso } from 'src/app/core/models/ingreso';
 })
 export class FormAgregarIngresoComponent {
 
-  @Input() ingreso: Ingreso | null = null;
-  @Output() save = new EventEmitter<Ingreso>();
-
   formulario: FormGroup;
 
   constructor( private fb: FormBuilder){
@@ -27,13 +24,7 @@ export class FormAgregarIngresoComponent {
   }
 
   onSubmit(){
-    if(this.formulario.valid){
-      const ingresoData: Ingreso = {
-        ...this.ingreso,
-        ...this.formulario.value
-      }
-      this.save.emit(this.formulario.value);
-    }
+    console.log(this.formulario.value);
   }
 
 

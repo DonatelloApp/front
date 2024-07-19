@@ -14,7 +14,7 @@
     </div>
 
     <div class="col">
-      <button type="button" (click)="onOpenModal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar</button>
+      <button type="button" (click)="onModalTrue()" class="btn btn-primary">Agregar</button>
     </div>
   </div>
 
@@ -35,6 +35,6 @@
   
 </div>
 
-<app-modal *ngif="modal" title="Agregar un ingreso" >
-  <app-form-agregar-ingreso (save)="onSaveIngreso($event)"></app-form-agregar-ingreso>
+<app-modal *ngIf="modalIngreso" title="Agregar un ingreso"  (close)="onModalFalse()">
+  <app-form-agregar-ingreso></app-form-agregar-ingreso>
 </app-modal>
