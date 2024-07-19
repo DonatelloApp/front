@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductFormComponent } from 'src/app/components/specific/product-form/product-form.component';
 import { NavbarComponent } from 'src/app/components/layout/navbar/navbar.component';
 import { SidebarComponent } from 'src/app/components/layout/sidebar/sidebar.component';
 import { ProveedoresComponent } from '../proveedores/proveedores.component';

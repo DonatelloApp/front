@@ -7,7 +7,7 @@
   id="prodForm"
 >
   <div class="row g-3">
-    <div [ngClass]=" isInsideModal() ? 'col col-md-5' : 'col-12 col-md-3'">
+    <div [ngClass]="isInsideModal() ? 'col col-md-5' : 'col-12 col-md-3'">
       <label class="form-label" for="name">Nombre</label>
       <div>
         <input
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div [ngClass]=" isInsideModal() ? 'col col-md-4' : 'col-12 col-md-3'">
+    <div [ngClass]="isInsideModal() ? 'col col-md-4' : 'col-12 col-md-3'">
       <label class="form-label" for="price">Precio</label>
       <div>
         <input
@@ -49,13 +49,10 @@
       </div>
     </div>
 
-    <div [ngClass]=" isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
       <label class="form-label" for="unit">Medida</label>
       <div>
-        <select
-          class="form-select"
-          formControlName="unit"
-        >
+        <select class="form-select" formControlName="unit">
           <option value="" disabled selected>-</option>
           <option value="Kg" selected>Kg</option>
           <option value="Un" selected>Un</option>
@@ -73,7 +70,7 @@
       </div>
     </div>
 
-    <div [ngClass]=" isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
       <label class="form-label" for="stock">Cantidad</label>
       <div>
         <input
@@ -94,7 +91,7 @@
       </div>
     </div>
 
-    <div [ngClass]=" isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
+    <div [ngClass]="isInsideModal() ? 'col col-md-3' : 'col-12 col-md-3'">
       <label class="form-label" for="minStock">Cant. Mínima</label>
       <div>
         <input
@@ -115,15 +112,17 @@
       </div>
     </div>
 
-    <div [ngClass]=" isInsideModal() ? 'col col-md-6' : 'col-12 col-md-3'">
+    <div
+      [ngClass]="isInsideModal() ? 'col col-md-6' : 'col-12 col-md-3'"
+      *ngIf="!isInsideModal()"
+    >
       <label class="form-label" for="supplier">Proveedor</label>
       <div>
-        <select
-          class="form-select"
-          formControlName="supplier"
-        >
+        <select class="form-select" formControlName="supplier">
           <option value="" disabled selected>-</option>
-          <option *ngFor="let prov of proveedores" value="{{ prov.id }}">{{ prov.name}}/{{ prov.company}}</option>
+          <option *ngFor="let prov of proveedores" value="{{ prov.id }}">
+            {{ prov.name }}/{{ prov.company }}
+          </option>
         </select>
         <span
           class="form-text"

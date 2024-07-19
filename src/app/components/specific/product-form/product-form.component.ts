@@ -1,6 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Product } from 'src/app/core/models/product';
 import { Proveedor } from 'src/app/core/models/proveedor';
 import { ProveedoresService } from 'src/app/core/services/proveedores.service';
@@ -8,10 +24,10 @@ import { capitalizeWords } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-product-form',
-  imports : [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   standalone: true,
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss']
+  styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnChanges, OnInit {
   private provService = inject(ProveedoresService);
@@ -21,7 +37,6 @@ export class ProductFormComponent implements OnChanges, OnInit {
   productForm: FormGroup;
   @Input() insideModal: boolean = false;
   errorMessage: String = '';
-
 
   constructor(private fb: FormBuilder) {
     this.productForm = this.fb.group({
@@ -52,7 +67,6 @@ export class ProductFormComponent implements OnChanges, OnInit {
     if (changes['product'] && this.product) {
       this.productForm.patchValue(this.product);
       this.productForm.get('supplier')?.setValue(this.product.providerId);
-      //this.proveedores.find((proveedor)=>proveedor.id === this.product?.providerId);
     }
   }
 
@@ -61,20 +75,20 @@ export class ProductFormComponent implements OnChanges, OnInit {
       const productReq: Product = {
         name: capitalizeWords(this.productForm.value.name),
         price: this.productForm.value.price,
-        description: "descripcion",
+        description: 'descripcion',
         unit: this.productForm.value.unit,
         stock: this.productForm.value.stock,
         minStock: this.productForm.value.minStock,
         providerId: this.productForm.value.supplier,
       };
-      
+
       if (this.product) productReq.id = this.product.id;
 
       this.save.emit(productReq);
     }
   }
 
-  isInsideModal(){
+  isInsideModal() {
     return this.insideModal;
   }
 }
