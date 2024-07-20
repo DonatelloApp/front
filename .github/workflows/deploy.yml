@@ -18,7 +18,7 @@ jobs:
         run: npm ci --verbose --frozen-lockfile
 
       - name: Verify dependencies
-        run: npm audit fix
+        run: npm audit
 
       - name: Build application
         run: npm run build
