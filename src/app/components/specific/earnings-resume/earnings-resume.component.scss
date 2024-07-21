@@ -1,0 +1,44 @@
+:root {
+  --black: #060215;
+  --gray100: #e6e5e5;
+  --gray300: #c2bdbd;
+  --white: #f8f8f8;
+
+  --greenTurtle: #018744;
+  --purpleTurtle: #5b00a7;
+  --redTurtle: #e93c3c;
+
+  --greenLight: #86dfb3;
+  --purpleLight: #ceb2e6;
+  --redLight: #ff9e9e;
+
+  --font-family: "Lato";
+}
+
+.card {
+  max-width: 180px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.circle-icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--purpleLight);
+  color: var(--white);
+}
+
+.circle-icon i {
+  font-size: 36px;
+}
+
+.text-muted {
+  font-family: var(--font-family);
+}
+
+.earnings-value {
+  font-family: var(--font-family);
+  font-weight: 500;
+}
