@@ -3,8 +3,7 @@ import { Routes } from '@angular/router';
 export const DASHBOARD_ROUTES: Routes = [
     {
         path: '',
-        //modificar ruta componente cuando se termine
-        loadComponent: () => import('./inProgress/in-progress.component').then(m => m.InProgressComponent),
+        loadComponent: () => import('./home/home.component').then(m => m.HomeComponent),
     },
     {
         path: 'stock',
