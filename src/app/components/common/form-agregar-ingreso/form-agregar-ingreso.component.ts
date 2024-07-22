@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Ingreso } from 'src/app/core/models/ingreso';
 
 @Component({
   selector: 'app-form-agregar-ingreso',

@@ -1,1 +1,24 @@
-<p>tabla-calculadora works!</p>
+<div class="container">
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>{{title$ | async}}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let ing of ingredientes">
+        <td>{{ing.name}}</td>
+        <td>{{ing.cantidad}} {{ing.medida}}</td>
+        <td>{{ing.coste}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total precio costo:</td>
+        <td>{{total}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

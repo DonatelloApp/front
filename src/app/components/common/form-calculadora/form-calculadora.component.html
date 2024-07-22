@@ -13,11 +13,12 @@
   <div class="row">
     <select class="form-select" name="ingrediente" formControlName="ingrediente">
       
-      <option selected>Selecciona ingrediente</option>
+      <option 
+        [value]="ing.id" 
+        *ngFor="let ing of ingredientes">
 
-      <option value="harina">Harina</option>
-      <option value="muzzarella">Muzzarella</option>
-      <option value="tomate">Tomate</option>
+          {{ing.name}}
+      </option>
     
     </select>
   </div>
@@ -34,13 +35,17 @@
 
   <div class="row">
     <select class="form-select" name="medida" formControlName="medida">
+      <option disabled selected>Ingresa la medida</option>
 
-      <option value="unidad">un</option>
-      <option value="gramo">gr</option>
-      <option value="litro">lt</option>
+      <option value="un">un</option>
+      <option value="gr">gr</option>
+      <option value="lt">lt</option>
 
     </select>
   </div>
 
+  <div class="row">
+    <button type="submit" class="btn btn-primary">Agregar ingrediente</button>
+  </div>
 
 </form>
