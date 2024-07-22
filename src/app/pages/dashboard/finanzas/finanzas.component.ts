@@ -23,5 +23,5 @@ import { SidebarComponent } from "../../../components/layout/sidebar/sidebar.com
   styleUrls: ['./finanzas.component.scss']
 })
 export class FinanzasComponent {
-
+  navbarTitle = "Finanzas"
 }

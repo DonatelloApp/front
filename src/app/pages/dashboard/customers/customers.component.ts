@@ -29,6 +29,7 @@ export class CustomersComponent {
   userLoginOn: boolean = false;
   customers: Customer[] = [];
   selectedCustomer: Customer | null = null;
+  navbarTitle = "Clientes"
   errorMessage: String = '';
 
   constructor() {}

@@ -29,6 +29,7 @@ export class ProveedoresComponent implements OnInit {
   userLoginOn: boolean = false;
   proveedores: Proveedor[] = [];
   selectedProveedor: Proveedor | null = null;
+  navbarTitle = "Proveedores"
   errorMessage: String = '';
 
   constructor() {}
