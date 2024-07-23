@@ -1,0 +1,84 @@
+<form
+  class="container ps-0 pe-0"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  [formGroup]="customerForm"
+  name="customer-form"
+  id="customerForm"
+>
+  <div class="row g-3">
+    <div [ngClass]="isInsideModal() ? 'col col-md-6' : 'col-12 col-md-4'">
+      <label class="form-label" for="name">Nombre</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre cliente"
+          formControlName="name"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            customerForm.controls['name'].errors &&
+            customerForm.controls['name'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-6' : 'col-12 col-md-4'">
+      <label class="form-label" for="address">Dirección</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder=""
+          formControlName="address"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            customerForm.controls['address'].errors &&
+            customerForm.controls['address'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-6' : 'col-12 col-md-4'">
+      <label class="form-label" for="phone">Telefono</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder=""
+          formControlName="phone"
+        />
+        <span
+          class="invalid-feedback"
+          *ngIf="
+            customerForm.controls['phone'].errors &&
+            customerForm.controls['phone'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12 guardar">
+      <div>
+        <button class="btn btn-primary" *ngIf="!isInsideModal()" type="submit">
+          Añadir
+        </button>
+        <button class="btn btn-primary" *ngIf="isInsideModal()" type="submit">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

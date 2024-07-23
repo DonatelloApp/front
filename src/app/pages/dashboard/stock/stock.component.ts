@@ -33,6 +33,7 @@ export class StockComponent implements OnInit {
   products: Product[] = [];
   selectedProduct: Product | null = null;
   selectedProveedor: number | null = null;
+  navbarTitle = "Stock"
   errorMessage: String = '';
 
   constructor() {}

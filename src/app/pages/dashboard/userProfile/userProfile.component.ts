@@ -46,6 +46,7 @@ export class UserProfileComponent {
   private formBuilder = inject(FormBuilder);
   userLoginOn: boolean = false;
   userProfile?: UserProfile;
+  navbarTitle = "Configuración"
   errorMessage: String = '';
   userProfileForm: FormGroup;
   isValid: boolean = false;
