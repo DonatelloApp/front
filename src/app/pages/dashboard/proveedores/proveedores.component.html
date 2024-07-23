@@ -20,7 +20,7 @@
             <td scope="row" class="col-1">{{ prov.id }}</td>
             <td class="col-2">{{ prov.name }}</td>
             <td class="col-2">{{ prov.company }}</td>
-            <td class="col-2">{{ prov.lastContact }}</td>
+            <td class="col-2">{{ prov.lastContact | date:'dd/MM/yyyy'}}</td>
             <td class="col-2">{{ prov.contact }}</td>
             <td class="col-1">
               <button
