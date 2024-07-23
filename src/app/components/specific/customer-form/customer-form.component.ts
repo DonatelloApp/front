@@ -30,9 +30,8 @@ export class CustomerFormComponent implements OnChanges, OnInit {
   ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['product'] && this.customer) {
+    if (changes['customer'] && this.customer) {
       this.customerForm.patchValue(this.customer);
-      this.customerForm.get('supplier')?.setValue(this.customer.id);
     }
   }
 
