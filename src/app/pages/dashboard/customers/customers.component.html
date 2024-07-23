@@ -2,30 +2,28 @@
 <div class="d-flex content-container">
   <app-sidebar></app-sidebar>
   <div class="container mt-4 mb-3">
-    <label class="title mb-2">Agenda de Proveedores</label>
+    <label class="title mb-2">Agenda de Clientes</label>
     <div class="table-wrapper">
       <table class="fondo table">
         <thead>
           <tr class="col-2">
             <th scope="col" class="col-1">Id</th>
             <th scope="col" class="col-2">Nombre</th>
-            <th scope="col" class="col-2">Empresa</th>
-            <th scope="col" class="col-2">Contactado por última vez</th>
+            <th scope="col" class="col-2">Dirección</th>
             <th scope="col" class="col-2">Teléfono</th>
             <th scope="col" class="col-1">Modificar</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let prov of proveedores">
-            <td scope="row" class="col-1">{{ prov.id }}</td>
-            <td class="col-2">{{ prov.name }}</td>
-            <td class="col-2">{{ prov.company }}</td>
-            <td class="col-2">{{ prov.lastContact | date:'dd/MM/yyyy'}}</td>
-            <td class="col-2">{{ prov.contact }}</td>
+          <tr *ngFor="let customer of customers">
+            <td scope="row" class="col-1">{{ customer.id }}</td>
+            <td class="col-2">{{ customer.name }}</td>
+            <td class="col-2">{{ customer.address }}</td>
+            <td class="col-2">{{ customer.phone }}</td>
             <td class="col-1">
               <button
                 type="button"
-                (click)="onEditProveedor(prov)"
+                (click)="onEditCustomer(customer)"
                 data-bs-toggle="#modal"
                 data-bs-target="#modalModificar"
               >
@@ -53,25 +51,25 @@
     </div>
     <div class="container">
       <div class="row">
-        <app-form-proveedores
+        <app-customer-form
           class="ps-0 pe-0"
           [insideModal]="false"
-          *ngIf="!selectedProveedor"
-          (save)="onSaveProveedor($event)"
-        ></app-form-proveedores>
+          *ngIf="!selectedCustomer"
+          (save)="onSaveCustomer($event)"
+        ></app-customer-form>
       </div>
     </div>
 
     <app-modal
-      *ngIf="selectedProveedor"
-      title="Modificar proveedor"
-      (close)="selectedProveedor = null"
+      *ngIf="selectedCustomer"
+      title="Modificar cliente"
+      (close)="selectedCustomer = null"
     >
-      <app-form-proveedores
-        [proveedor]="selectedProveedor"
+      <app-customer-form
+        [customer]="selectedCustomer"
         [insideModal]="true"
-        (save)="onSaveProveedor($event)"
-      ></app-form-proveedores>
+        (save)="onSaveCustomer($event)"
+      ></app-customer-form>
     </app-modal>
   </div>
 </div>

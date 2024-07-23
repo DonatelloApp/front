@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import {Router, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 
@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit{
   userLoginOn:boolean=false;
   private loginService = inject(LoginService);
   private router = inject(Router);
+  @Input() dashboardTitle: string | undefined;
   currentRoute: string = '';
 
   constructor(){
