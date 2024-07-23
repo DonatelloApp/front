@@ -13,61 +13,16 @@
   --redLight: #ff9e9e;
 }
 
-section {
-  background-color: var(--gray100);
-  padding: 2rem;
-}
-
-.fondo {
-  background-color: var(--white);
-}
-
-.table {
-  background-color: var(--white);
-}
-th {
-  background-color: var(--white);
-}
-td {
-  background-color: var(--white);
-}
-
 .guardar {
   display: flex;
-  justify-content: end;
-  align-items: end;
-}
-
-.conenedor-tabla {
-  background-color: #060215;
-  padding: 0 2rem 0 2rem;
-  margin: 2rem;
-}
-
-.p-table {
-  max-height: 60vh;
-  overflow: scroll;
-
-  background-color: var(--white);
-  padding: 2rem;
-  border-radius: 32px;
-}
-
-.container {
-  margin-top: 2rem;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 label {
   margin-left: 5px;
 }
 
-.boton {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: end;
-  justify-content: center;
-}
 .btn-primary {
   background-color: var(--purpleTurtle);
   border-color: var(--purpleTurtle);

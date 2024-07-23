@@ -1,6 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Customer } from 'src/app/core/models/customer';
 import { capitalizeWords } from 'src/app/utils/utils';
 
@@ -9,7 +22,7 @@ import { capitalizeWords } from 'src/app/utils/utils';
   imports: [CommonModule, ReactiveFormsModule],
   standalone: true,
   templateUrl: './customer-form.component.html',
-  styleUrls: ['./customer-form.component.scss']
+  styleUrls: ['./customer-form.component.scss'],
 })
 export class CustomerFormComponent implements OnChanges, OnInit {
   @Input() customer: Customer | null = null;
