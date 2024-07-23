@@ -21,7 +21,7 @@ import { LoginService } from 'src/app/core/services/login.service';
     SidebarComponent,
   ],
   templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.scss']
+  styleUrls: ['./customers.component.scss'],
 })
 export class CustomersComponent {
   private loginService = inject(LoginService);
@@ -29,7 +29,7 @@ export class CustomersComponent {
   userLoginOn: boolean = false;
   customers: Customer[] = [];
   selectedCustomer: Customer | null = null;
-  navbarTitle = "Clientes"
+  navbarTitle = 'Clientes';
   errorMessage: String = '';
 
   constructor() {}
