@@ -24,6 +24,72 @@ button {
   background-color: var(--gray100);
 }
 
+tbody tr:hover {
+  td {
+    color: var(--redTurtle);
+  }
+}
+
+thead th {
+  position: sticky;
+  top: 0px;
+  left: 0px;
+}
+
+table {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+tbody {
+  height: 300px;
+  overflow: auto;
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+thead {
+  display: block;
+  border-radius: 0.6rem;
+}
+
+.table-wrapper {
+  border-radius: 0.6rem;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.table {
+  border-radius: 0.6rem;
+  width: 100%;
+}
+
+tbody tr {
+  width: 100%;
+  display: inline-table;
+}
+
+thead tr {
+  width: 100%;
+  display: inline-table;
+}
+
+tbody::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+tbody::-webkit-scrollbar-thumb {
+  background: var(--gray300); /* Color del thumb del scrollbar */
+  border-radius: 0.5rem; /* Esquinas redondeadas del thumb */
+  visibility: hidden;
+}
+
+tbody:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
 .title {
   font-weight: 600;
 }
@@ -44,23 +110,8 @@ button {
   text-align: center;
 }
 
-.conenedor-tabla {
-  background-color: #060215;
-  padding: 0 2rem 0 2rem;
-  margin: 2rem;
-}
-
-.p-table {
-  max-height: 60vh;
-  overflow: scroll;
-
-  background-color: var(--white);
-  padding: 2rem;
-  border-radius: 32px;
-}
-
 .container {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 label {
