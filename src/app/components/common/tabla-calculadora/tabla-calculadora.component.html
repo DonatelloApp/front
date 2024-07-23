@@ -10,7 +10,7 @@
     <tbody>
       <tr *ngFor="let ing of ingredientes">
         <td>{{ing.name}}</td>
-        <td>{{ing.cantidad}} {{ing.medida}}</td>
+        <td>{{ing.cantidad}} {{ing.medida | medida}}</td>
         <td>{{ing.coste | currency:'ARS':'symbol-narrow'}}</td>
       </tr>
     </tbody>

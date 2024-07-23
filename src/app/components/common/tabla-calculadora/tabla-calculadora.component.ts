@@ -2,12 +2,13 @@ import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingredient } from 'src/app/core/models/ingredient';
+import { MedidaPipe } from 'src/app/core/pipes/medida.pipe';
 import { CalculadoraService } from 'src/app/core/services/calculadora.service';
 
 @Component({
   selector: 'app-tabla-calculadora',
   standalone:true,
-  imports:[AsyncPipe, CurrencyPipe, CommonModule],
+  imports:[AsyncPipe, CurrencyPipe,MedidaPipe, CommonModule],
   templateUrl: './tabla-calculadora.component.html',
   styleUrls: ['./tabla-calculadora.component.scss']
 })

@@ -58,7 +58,7 @@ export class FormCalculadoraComponent implements OnInit{
     private calculadoraService: CalculadoraService ){
 
     this.formulario = this.fb.group({
-      producto:[''],
+      producto:[ {value:'',disabled:'false'} ,[Validators.required]],
       ingrediente:['',[Validators.required]],
       cantidad:['',[Validators.required]],
       medida:['',[Validators.required]]
