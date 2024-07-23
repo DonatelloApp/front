@@ -67,12 +67,12 @@ export class FormCalculadoraComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    /*this.ingredientsService.getProducts().subscribe({
+    this.ingredientsService.getProducts().subscribe({
       next: (data) =>{
         this.ingredientes = data;
       }
-    });*/
-    this.ingredientes = this.productos;
+    });
+    //this.ingredientes = this.productos;
 
     this.formulario.get('ingrediente')?.valueChanges.subscribe( selectedId =>{
       this.productoElegido = this.ingredientes?.find( ingr => ingr.id === +selectedId );
