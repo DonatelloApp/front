@@ -1,64 +1,64 @@
-<app-navbar></app-navbar>
+<app-navbar [dashboardTitle]="navbarTitle"></app-navbar>
 <div class="d-flex content-container">
   <app-sidebar></app-sidebar>
   <div class="container mt-4 mb-3">
     <label class="title mb-2">Agenda de Proveedores</label>
-
-    <table class="fondo table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Empresa</th>
-          <th scope="col">Contactado por última vez</th>
-          <th scope="col">Teléfono</th>
-          <th scope="col">Modificar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let prov of proveedores">
-          <td scope="row">{{ prov.id }}</td>
-          <td>{{ prov.name }}</td>
-          <td>{{ prov.company }}</td>
-          <td>{{ prov.lastContact }}</td>
-          <td>{{ prov.contact }}</td>
-          <td>
-            <button
-              type="button"
-              (click)="onEditProveedor(prov)"
-              data-bs-toggle="#modal"
-              data-bs-target="#modalModificar"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="#5b00a7"
-                class="bi bi-pencil-square"
-                viewBox="0 0 16 16"
+    <div class="table-wrapper">
+      <table class="fondo table">
+        <thead>
+          <tr class="col-2">
+            <th scope="col" class="col-1">Id</th>
+            <th scope="col" class="col-2">Nombre</th>
+            <th scope="col" class="col-2">Empresa</th>
+            <th scope="col" class="col-2">Contactado por última vez</th>
+            <th scope="col" class="col-2">Teléfono</th>
+            <th scope="col" class="col-1">Modificar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prov of proveedores">
+            <td scope="row" class="col-1">{{ prov.id }}</td>
+            <td class="col-2">{{ prov.name }}</td>
+            <td class="col-2">{{ prov.company }}</td>
+            <td class="col-2">{{ prov.lastContact | date:'dd/MM/yyyy'}}</td>
+            <td class="col-2">{{ prov.contact }}</td>
+            <td class="col-1">
+              <button
+                type="button"
+                (click)="onEditProveedor(prov)"
+                data-bs-toggle="#modal"
+                data-bs-target="#modalModificar"
               >
-                <path
-                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
-                />
-              </svg>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="#5b00a7"
+                  class="bi bi-pencil-square"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="container">
       <div class="row">
-        <div class="col-9">
-          <app-form-proveedores
-            *ngIf="!selectedProveedor"
-            (save)="onSaveProveedor($event)"
-          ></app-form-proveedores>
-        </div>
+        <app-form-proveedores
+          class="ps-0 pe-0"
+          [insideModal]="false"
+          *ngIf="!selectedProveedor"
+          (save)="onSaveProveedor($event)"
+        ></app-form-proveedores>
       </div>
     </div>
 
@@ -69,6 +69,7 @@
     >
       <app-form-proveedores
         [proveedor]="selectedProveedor"
+        [insideModal]="true"
         (save)="onSaveProveedor($event)"
       ></app-form-proveedores>
     </app-modal>

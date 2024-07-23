@@ -15,20 +15,12 @@
 
 .guardar {
   display: flex;
-  justify-content: end;
-  align-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 label {
   margin-left: 5px;
-}
-
-.boton {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: end;
-  justify-content: center;
 }
 
 .btn-primary {

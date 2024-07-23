@@ -25,6 +25,7 @@ import { capitalizeWords } from 'src/app/utils/utils';
 })
 export class FormProveedoresComponent implements OnChanges {
   @Input() proveedor: Proveedor | null = null;
+  @Input() insideModal: boolean = false;
   @Output() save = new EventEmitter<Proveedor>();
 
   formulario: FormGroup;
@@ -57,5 +58,9 @@ export class FormProveedoresComponent implements OnChanges {
 
       this.save.emit(proveedorReq);
     }
+  }
+
+  isInsideModal() {
+    return this.insideModal;
   }
 }
