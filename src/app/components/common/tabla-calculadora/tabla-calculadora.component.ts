@@ -1,4 +1,4 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Ingredient } from 'src/app/core/models/ingredient';
@@ -7,13 +7,13 @@ import { CalculadoraService } from 'src/app/core/services/calculadora.service';
 @Component({
   selector: 'app-tabla-calculadora',
   standalone:true,
-  imports:[AsyncPipe, CommonModule],
+  imports:[AsyncPipe, CurrencyPipe, CommonModule],
   templateUrl: './tabla-calculadora.component.html',
   styleUrls: ['./tabla-calculadora.component.scss']
 })
 export class TablaCalculadoraComponent implements OnInit{
 
-  ingredientes : Ingredient[] | null = null;
+  ingredientes : Ingredient[] = [];
   title$: Observable<string>;
 
   total = 0;

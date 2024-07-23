@@ -1,5 +1,5 @@
 <div class="container">
-  <table class="table">
+  <table class="table-sm">
 
     <thead>
       <tr>
@@ -11,13 +11,18 @@
       <tr *ngFor="let ing of ingredientes">
         <td>{{ing.name}}</td>
         <td>{{ing.cantidad}} {{ing.medida}}</td>
-        <td>{{ing.coste}}</td>
+        <td>{{ing.coste | currency:'ARS':'symbol-narrow'}}</td>
       </tr>
     </tbody>
-    <tfoot>
-      <tr>
-        <td>Total precio costo:</td>
-        <td>{{total}}</td>
+
+    <tfoot *ngIf="ingredientes && ingredientes.length > 0">
+      <tr class="precio">
+        <td class="bold">Total precio costo:</td>
+        <td class="bold">{{total | currency:'ARS':'symbol-narrow'}}</td>
+      </tr>
+      <tr class="precio">
+        <td class="grey">Precio sugerido venta al publico:</td>
+        <td class="grey">{{total*2 | currency:'ARS':'symbol-narrow'}}</td>
       </tr>
     </tfoot>
   </table>

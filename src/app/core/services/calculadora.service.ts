@@ -13,22 +13,25 @@ export class CalculadoraService {
   private ingredientsSubject = new BehaviorSubject <Ingredient[]>([]);
   ingredientes$: Observable<Ingredient[]> = this.ingredientsSubject.asObservable();
 
-
-
+  
   agregarIngrediente(nuevoIngrediente:Ingredient){
 
     const ingredienteModificado = this.calcularIngrediente(nuevoIngrediente);
 
     const ingredienteActual = this.ingredientsSubject.value;
-
     this.ingredientsSubject.next([ ...ingredienteActual, ingredienteModificado ])
-
   }
 
   private calcularIngrediente( ingr: Ingredient ){
+    let precioModificado = 0;
+
+    if(ingr.unit === 'kg' || ingr.unit === 'lt'){
+      precioModificado = ingr.cantidad * ingr.price / 1000;
+    }
+    if(ingr.unit === 'un'){
+      precioModificado = ingr.price * ingr.cantidad;
+    }    
     
-    const precioModificado = ingr.cantidad * ingr.price / 1000;
-    //Hacer para litros y unidades
     return{ ...ingr, coste:precioModificado }
   }
 
@@ -44,9 +47,6 @@ export class CalculadoraService {
   setTitle(titulo: string){
     this.title.next(titulo);
   }
-
-
-
 
 
 

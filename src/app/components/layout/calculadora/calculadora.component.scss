@@ -1,5 +1,45 @@
 .container{
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+.card{
+  height: 100%;
+  padding: 2rem;
+  border-radius: 24px;
+}
+
+h3{
+  font-size: large;
+  font-weight: bold;
+  display: flex;
+  text-align: start;
+}
+
+.boton{
+  display: flex;
+  justify-content: end;
+}
+
+app-form-calculadora{
+  height: 100%;
+  width: 100%;
+}
+
+app-tabla-calculadora{
+  height: 100%;
+  width: 100%;
+}
+
+.contenido{
+  height: 100%;
+}
+
+.btn-primary{
+  background-color: #5b00a7;
+  border-radius: 16px;
+  height: 3rem;
+  border: #5b00a7;
+}

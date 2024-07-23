@@ -6,7 +6,8 @@
       class="form-control" 
       name="producto" 
       placeholder="Nombre del producto" 
-      formControlName="producto">
+      formControlName="producto"
+      [disabled]="!!formulario.get('producto')?.disabled">
       
   </div>
 
@@ -38,13 +39,13 @@
       <option disabled selected>Ingresa la medida</option>
 
       <option value="un">un</option>
-      <option value="gr">gr</option>
-      <option value="lt">lt</option>
+      <option value="kg">gr</option>
+      <option value="lt">ml</option>
 
     </select>
   </div>
 
-  <div class="row">
+  <div class="boton row">
     <button type="submit" class="btn btn-primary">Agregar ingrediente</button>
   </div>
 
