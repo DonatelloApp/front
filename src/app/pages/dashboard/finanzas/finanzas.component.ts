@@ -25,5 +25,5 @@ import { CalculadoraComponent } from "../../../components/layout/calculadora/cal
   styleUrls: ['./finanzas.component.scss']
 })
 export class FinanzasComponent {
-
+  navbarTitle = "Finanzas"
 }

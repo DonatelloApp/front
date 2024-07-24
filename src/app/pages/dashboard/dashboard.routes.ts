@@ -24,6 +24,10 @@ export const DASHBOARD_ROUTES: Routes = [
         loadComponent: () => import('./proveedores/proveedores.component').then(m => m.ProveedoresComponent),
     },
     {
+        path: 'customers',
+        loadComponent: () => import('./customers/customers.component').then(m => m.CustomersComponent),
+    },
+    {
         path: 'user-profile',
         loadComponent: () => import('./userProfile/userProfile.component').then(m => m.UserProfileComponent),
     },

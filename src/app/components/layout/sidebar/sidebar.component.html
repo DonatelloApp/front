@@ -42,8 +42,18 @@
           routerLink="/dashboard/suppliers"
           [ngClass]="{ 'item-color-selected': isRoute('/dashboard/suppliers') }"
         >
-          <i class="bi bi-person-lines-fill"></i>
+          <i class="bi bi-boxes"></i>
           <span class="ms-1 d-none d-sm-inline">Provedores</span></a
+        >
+      </li>
+      <li>
+        <a
+          class="nav-link px-0 align-middle mb-2 item-color"
+          routerLink="/dashboard/customers"
+          [ngClass]="{ 'item-color-selected': isRoute('/dashboard/customers') }"
+        >
+          <i class="bi bi-person-lines-fill"></i>
+          <span class="ms-1 d-none d-sm-inline">Clientes</span></a
         >
       </li>
     </ul>
