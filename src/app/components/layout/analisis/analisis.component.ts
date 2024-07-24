@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, ChartType } from 'chart.js/auto';
-import { Finance, tipo } from 'src/app/core/models/finance';
+import { tipo, Transaction } from 'src/app/core/models/Transaction';
 import * as plugin from 'tailwindcss';
 
 @Component({
@@ -13,18 +13,18 @@ export class AnalisisComponent implements OnInit{
 
   public chart?: Chart;
 
-  finanzas: Finance[] = [
+  finanzas: Transaction[] = [
     {
       "id": 0,
-      "tipo": tipo.gasto,
-      "monto": 15323,
-      "fecha": "01/01/1992"
+      "type": tipo.gasto,
+      "amount": 15323,
+      "date": new Date()
     },
     {
       "id": 1,
-      "tipo": tipo.ingreso,
-      "monto": 32142,
-      "fecha": "02/02/1992"
+      "type": tipo.ingreso,
+      "amount": 32142,
+      "date": new Date()
     }
   ]
 

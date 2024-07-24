@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
-import { Transaction } from '../models/Transaction';
+import { BehaviorSubject, catchError, filter, map, Observable, tap, throwError } from 'rxjs';
+import { tipo, Transaction } from '../models/Transaction';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -11,26 +11,12 @@ import { environment } from 'src/environments/environment';
 export class FinanzasService {
   private loginService = inject(LoginService);
   private http = inject(HttpClient);
+  
   userLoginOn: boolean = false;
   transactions: BehaviorSubject<Transaction[]> = new BehaviorSubject<Transaction[]>(
     []
   );
   errorMessage: String = '';
-
-  ganancias=234900;
-
-  ingresos = {
-    dia:50280,
-    semana:250200,
-    mes:850700
-  };
-
-  gastos = {
-    mes:24650,
-    motivo:'Factura',
-    monto:52000,
-    vencimiento:'03/7/24'
-  }
 
   constructor() {
     this.loginService.userLoginOn.subscribe({
@@ -53,6 +39,24 @@ export class FinanzasService {
       }),
       map((userData) => userData),
       catchError(this.handleError)
+    );
+  }
+
+  getIngresosDelDia(): Observable <Transaction[]>{
+    return this.getTransactions().pipe(
+      map( (ingresos) => this.filterByDate( ingresos, 'day') )
+    );
+  }
+
+  getIngresosDeLaSemana(): Observable <Transaction[]>{
+    return this.getTransactions().pipe(
+      map( (ingresos) => this.filterByDate( ingresos, 'week') )
+    );
+  }
+
+  getIngresosDelMes(): Observable <Transaction[]>{
+    return this.getTransactions().pipe(
+      map( (ingresos) => this.filterByDate( ingresos, 'month') )
     );
   }
 
@@ -90,36 +94,9 @@ export class FinanzasService {
       );
   }
 
-  //GANANCIAS
-  getGanancias(){
-    return this.ganancias;
-  }
 
-  //INGRESOS
-  getIngresosDia(){
-    return this.ingresos.dia;
-  }
-  getIngresosSemana(){
-    return this.ingresos.semana;
-  }
-  getIngresosMes(){
-    return this.ingresos.mes;
-  }
-
-  agregarIngreso(ingreso:any){
-    this.ingresos = ingreso;
-  }
 
   //GASTOS
-  getGastos(){
-    return this.gastos;
-  }
-  getGastosMes(){
-    return this.gastos.mes;
-  }
-  cargarGasto(gasto:any){
-    this.gastos = gasto;
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -134,6 +111,44 @@ export class FinanzasService {
     return throwError(
       () => new Error('Algo fallo. Por favor intente de nuevo')
     );
+  }
+
+
+
+  private filterByDate( transacciones: Transaction[], period: 'day' | 'week' | 'month'): Transaction[]{
+    const now = new Date();
+    
+    return transacciones.filter( transaction =>{
+      
+      if(transaction.type !== tipo.ingreso){
+        return false
+      }
+
+      const transaccionDate = new Date( transaction.date );
+      
+      switch (period) {
+        case 'day':
+          return transaccionDate.toDateString() === now.toDateString();
+
+        case 'week':
+          const startOfWeek = new Date(now);//Crea inicio de semana
+          startOfWeek.setDate(now.getDate() - now.getDay());
+          startOfWeek.setHours(0, 0, 0, 0);
+
+          const endOfWeek = new Date(startOfWeek);//Crea final de semana
+          endOfWeek.setDate(startOfWeek.getDate() + 7);
+
+          return transaccionDate >= startOfWeek && transaccionDate < endOfWeek;
+
+        case 'month':
+          return transaccionDate.getMonth() === now.getMonth() && transaccionDate.getFullYear() === now.getFullYear();
+
+        default:
+          return false;
+      }
+
+    });
+
   }
 
 }

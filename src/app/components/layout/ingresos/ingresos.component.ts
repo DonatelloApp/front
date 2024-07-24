@@ -4,6 +4,7 @@ import { Ingreso } from 'src/app/core/models/ingreso';
 import { FormAgregarIngresoComponent } from "../../common/form-agregar-ingreso/form-agregar-ingreso.component";
 import { FinanzasService } from 'src/app/core/services/finanzas.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { Transaction } from 'src/app/core/models/Transaction';
 
 @Component({
   selector: 'app-ingresos',
@@ -19,6 +20,11 @@ export class IngresosComponent {
   ingresosMes:number =0;
 
   ingreso:Ingreso | null = null;
+
+  ingresosDelDia : Transaction[] = [];
+  ingresosDeLaSemana : Transaction[] = [];
+  ingresosDelMes : Transaction[] = [];
+
   modalIngreso:Boolean = false;
 
   constructor( private finanzasServ:FinanzasService){
@@ -26,7 +32,10 @@ export class IngresosComponent {
   }
 
   ngOnInit(){
-    this.loadIngreso();
+    this.loadIngresosDelDia();
+    this.loadIngresosDeLaSemana();
+    this.loadIngresosDelMes();
+    this.sumarIngresos();
   }
 
   onModalFalse(){
@@ -38,10 +47,38 @@ export class IngresosComponent {
     this.modalIngreso = true;
   }
 
-  loadIngreso(){
-    this.ingresosDia = this.finanzasServ.getIngresosDia();
-    this.ingresosSemana = this.finanzasServ.getIngresosSemana();
-    this.ingresosMes = this.finanzasServ.getIngresosMes();
+  loadIngresosDelDia(){
+    this.finanzasServ.getIngresosDelDia().subscribe({
+      next:(data) => this.ingresosDelDia = data,
+      error:(error) => console.error('Error cargando ingresos del dia:', error)
+    });
   }
 
+  loadIngresosDeLaSemana(){
+    this.finanzasServ.getIngresosDeLaSemana().subscribe({
+      next:(data) => this.ingresosDeLaSemana = data,
+      error:(error) => console.error('Error cargando ingresos del mes:', error)
+    });
+  }
+
+  loadIngresosDelMes(){
+    this.finanzasServ.getIngresosDelMes().subscribe({
+      next:(data) => this.ingresosDelMes = data,
+      error:(error) => console.error('Error cargando ingresos del mes:', error)
+    });
+  }
+
+  sumarIngresos(){
+    this.ingresosDelDia.forEach( ing =>{
+      this.ingresosDia += ing.amount;
+    });
+
+    this.ingresosDeLaSemana.forEach( ing =>{
+      this.ingresosSemana += ing.amount;
+    });
+
+    this.ingresosDelMes.forEach( ing =>{
+      this.ingresosMes += ing.amount;
+    });
+  }
 }
