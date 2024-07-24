@@ -37,26 +37,29 @@ export class FinanzasService {
       tap((userData) => {
         this.transactions.next(userData);
       }),
-      map((userData) => userData),
+      map((userData)=> userData),
       catchError(this.handleError)
     );
   }
 
   getIngresosDelDia(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (ingresos) => this.filterByDate( ingresos, 'day') )
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingresos)=> this.filterByDate( ingresos, 'day') )
     );
   }
 
   getIngresosDeLaSemana(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (ingresos) => this.filterByDate( ingresos, 'week') )
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingresos)=> this.filterByDate( ingresos, 'week') )
     );
   }
 
   getIngresosDelMes(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (ingresos) => this.filterByDate( ingresos, 'month') )
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingresos)=> this.filterByDate( ingresos, 'month') )
     );
   }
 
@@ -94,9 +97,15 @@ export class FinanzasService {
       );
   }
 
-
-
   //GASTOS
+  getGastosdelMes(): Observable <Transaction[]>{
+    return this.getTransactions().pipe(
+      map( (gastos)=> gastos.filter( transaccion => transaccion.type === tipo.gasto) ),
+      map( (gastos)=> this.filterByDate( gastos, 'month' ) )
+    );
+  }
+
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -119,10 +128,6 @@ export class FinanzasService {
     const now = new Date();
     
     return transacciones.filter( transaction =>{
-      
-      if(transaction.type !== tipo.ingreso){
-        return false
-      }
 
       const transaccionDate = new Date( transaction.date );
       

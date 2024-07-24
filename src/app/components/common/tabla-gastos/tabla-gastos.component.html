@@ -4,18 +4,16 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Destinatario</th>
         <th>Monto</th>
-        <th>Vencimiento</th>
+        <th>Fecha</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let gasto of gastos">
         <td>{{gasto.id}}</td>
-        <td>{{gasto.destinatario}}</td>
-        <td>{{gasto.monto}}</td>
-        <td>{{gasto.vencimiento}}</td>
+        <td>{{gasto.amount}}</td>
+        <td>{{gasto.date}}</td>
       </tr>
     </tbody>
     
