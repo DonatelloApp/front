@@ -1,1 +1,15 @@
-<p>limite-gastos works!</p>
+<div class="card text-center m-1">
+
+  <div class="row">
+    <h3>Limite de gastos:</h3>
+    <p>{{totalGastoDelMes}}k de {{limiteDeGasto / 1000}}k</p>
+  </div>
+
+  <div class="row">
+    <div class="progress" role="progressbar" aria-label="Basic example" [attr.aria-valuenow]="totalGastoDelMes" aria-valuemin="0"
+      aria-valuemax="100">
+      <div class="progress-bar" [style.width.%]="porcentaje"></div>
+    </div>
+  </div>
+
+</div>
