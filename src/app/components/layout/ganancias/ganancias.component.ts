@@ -24,34 +24,39 @@ export class GananciasComponent implements OnInit{
   ngOnInit(): void {
     this.loadIngresoDelMes();
     this.loadGastosDelMes();
-    this.calcularGanancia();
   }
 
   loadIngresoDelMes(){
     this.finanzasService.getIngresosDelMes().subscribe({
-      next:(data)=> this.ingresoDelMes = data,
+      next:(data)=> {
+        this.ingresoDelMes = data;
+
+        this.ingresoDelMes.forEach( ing=> {
+          this.totalIngresoDelMes += ing.amount;
+        });
+      },
+
       error:(error)=> console.error('Error cargando ingresos del mes:', error)
     });
   }
 
   loadGastosDelMes(){
     this.finanzasService.getGastosdelMes().subscribe({
-      next:(data)=> this.gastoDelMes = data,
+      next:(data)=> {
+        this.gastoDelMes = data;
+
+        this.gastoDelMes.forEach( gasto=> {
+          this.totalGastoDelMes += gasto.amount;
+        });
+        this.calcularGanancia();
+      },
+
       error:(error)=> console.error('Error cargando gastos del mes:', error)
     });
+      
   }
 
   calcularGanancia(){
-    
-    this.ingresoDelMes.forEach( ing=> {
-      this.totalIngresoDelMes += ing.amount;
-    });
-
-    this.gastoDelMes.forEach( gasto=> {
-      this.totalGastoDelMes += gasto.amount;
-    })
-
     this.ganancias = this.totalIngresoDelMes - this.totalGastoDelMes;
-
   }
 }
