@@ -43,11 +43,6 @@ export class FinanzasService {
   }
 
   getIngresosDelDia(): Observable <Transaction[]>{
-    this.getTransactions().subscribe({next:(data)=>{
-      data.forEach(el =>{
-        console.log(el.type)
-      })
-    }})
     return this.getTransactions().pipe(
       map( (ingreso)=> ingreso.filter( transaccion => transaccion.type == "income") ),
       map( (ingresos)=> this.filterByDate( ingresos, 'day') )
@@ -65,6 +60,22 @@ export class FinanzasService {
     return this.getTransactions().pipe(
       map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === "income") ),
       map( (ingresos)=> this.filterByDate( ingresos, 'month') )
+    );
+  }
+
+  //GASTOS
+  getGastosdelMes(): Observable<Transaction[]> {
+    return this.getTransactions().pipe(
+      map((gastos) => gastos.filter(transaccion => transaccion.type == "spend")),
+      map((gastos) => this.filterByDate(gastos, 'month')),
+    );
+  }
+
+  getGastosPorMotivo(motivo: string): Observable<Transaction[]> {
+    return this.getTransactions().pipe(
+      map((gastos) => gastos.filter(transaccion => transaccion.type == "spend")),
+      map((gastos) => this.filterByDate(gastos, 'month')),
+      map((gastos)=> gastos.filter(transaccion => transaccion.origin ==  motivo))
     );
   }
 
@@ -101,15 +112,6 @@ export class FinanzasService {
         catchError(this.handleError)
       );
   }
-
-  //GASTOS
-  getGastosdelMes(): Observable <Transaction[]>{
-    return this.getTransactions().pipe(
-      map( (gastos)=> gastos.filter( transaccion => transaccion.type == "spend") ),
-      map( (gastos)=> this.filterByDate( gastos, 'month' ) )
-    );
-  }
-
 
 
   private handleError(error: HttpErrorResponse) {
