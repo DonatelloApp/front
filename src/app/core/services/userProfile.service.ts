@@ -60,4 +60,8 @@ export class UserProfileService {
     }
     return throwError(()=>new Error('Algo fallo. Por favor intente de nuevo'));
    }
+
+   get userProfileData(){
+    return this.userProfile.asObservable();
+   }
 }
