@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { tipo, Transaction } from 'src/app/core/models/Transaction';
+import { Transaction } from 'src/app/core/models/Transaction';
 import { FinanzasService } from 'src/app/core/services/finanzas.service';
 
 @Component({
@@ -30,9 +30,11 @@ export class FormAgregarIngresoComponent {
   onSubmit(){
     if(this.formulario.valid){
       const nuevoIngreso: Transaction = {
-        type: tipo.ingreso,
+        type: "income",
         amount: this.formulario.value.monto,
-        date: this.formulario.value.fecha
+        date: this.formulario.value.fecha,
+        origin: undefined,
+        description: undefined
       };
 
       this.financeService.addTransaction(nuevoIngreso).subscribe({

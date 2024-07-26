@@ -1,12 +1,15 @@
 export interface Transaction {
   id?: number;
-  type: tipo;
+  type: string;
   amount: number;
   date: Date;
+  origin?: string;
+  description?: string
 }
 
-
+/*
 export enum tipo{
-  ingreso,
-  gasto
+  income,
+  spend
 }
+  */

@@ -35,7 +35,6 @@ export class IngresosComponent {
     this.loadIngresosDelDia();
     this.loadIngresosDeLaSemana();
     this.loadIngresosDelMes();
-    this.sumarIngresos();
   }
 
   onModalFalse(){
@@ -49,36 +48,39 @@ export class IngresosComponent {
 
   loadIngresosDelDia(){
     this.finanzasServ.getIngresosDelDia().subscribe({
-      next:(data) => this.ingresosDelDia = data,
+      next:(data) => {
+        this.ingresosDelDia = data
+        this.ingresosDelDia.forEach( ing =>{
+          this.ingresosDia += ing.amount;
+        });
+      },
       error:(error) => console.error('Error cargando ingresos del dia:', error)
     });
+    
   }
 
   loadIngresosDeLaSemana(){
     this.finanzasServ.getIngresosDeLaSemana().subscribe({
-      next:(data) => this.ingresosDeLaSemana = data,
+      next:(data) => {
+        this.ingresosDeLaSemana = data
+        this.ingresosDeLaSemana.forEach( ing =>{
+          this.ingresosSemana += ing.amount;
+        });
+      },
       error:(error) => console.error('Error cargando ingresos del mes:', error)
     });
   }
 
   loadIngresosDelMes(){
     this.finanzasServ.getIngresosDelMes().subscribe({
-      next:(data) => this.ingresosDelMes = data,
+      next:(data) => {
+        this.ingresosDelMes = data
+        this.ingresosDelMes.forEach( ing =>{
+          this.ingresosMes += ing.amount;
+        });
+      },
       error:(error) => console.error('Error cargando ingresos del mes:', error)
     });
   }
 
-  sumarIngresos(){
-    this.ingresosDelDia.forEach( ing =>{
-      this.ingresosDia += ing.amount;
-    });
-
-    this.ingresosDeLaSemana.forEach( ing =>{
-      this.ingresosSemana += ing.amount;
-    });
-
-    this.ingresosDelMes.forEach( ing =>{
-      this.ingresosMes += ing.amount;
-    });
-  }
 }

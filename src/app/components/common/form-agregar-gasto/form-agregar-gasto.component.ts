@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { tipo, Transaction } from 'src/app/core/models/Transaction';
+import { Transaction } from 'src/app/core/models/Transaction';
 import { FinanzasService } from 'src/app/core/services/finanzas.service';
 
 @Component({
@@ -23,8 +23,8 @@ export class FormAgregarGastoComponent {
     this.formulario = this.fb.group({
       monto: [0, [Validators.required]],
       fecha: [ this.getCurrentDate() , [Validators.required]],
-      //motivo: [null, [Validators.required]],
-      //descripcion: ['', [Validators.required]]
+      motivo: [null, [Validators.required]],
+      descripcion: ['', [Validators.required]]
     })
   }
 
@@ -32,9 +32,12 @@ export class FormAgregarGastoComponent {
   onSubmit() { 
     if( this.formulario.valid){
       const nuevoGasto: Transaction = {
-        type: tipo.gasto,
+        type: "spend",
         amount: this.formulario.value.monto,
-        date: this.formulario.value.fecha
+        date: this.formulario.value.fecha,
+        description: this.formulario.value.descripcion,
+        origin: this.formulario.value.motivo
+        
       };
 
       this.finanzasService.addTransaction(nuevoGasto).subscribe({

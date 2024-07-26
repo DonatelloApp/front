@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, catchError, filter, map, Observable, tap, throwError } from 'rxjs';
-import { tipo, Transaction } from '../models/Transaction';
+import { Transaction } from '../models/Transaction';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -33,7 +33,7 @@ export class FinanzasService {
   }
 
   getTransactions(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(environment.urlApi + '/finances').pipe(
+    return this.http.get<Transaction[]>(environment.urlApi + '/finances/transactions/').pipe(
       tap((userData) => {
         this.transactions.next(userData);
       }),
@@ -43,29 +43,34 @@ export class FinanzasService {
   }
 
   getIngresosDelDia(): Observable <Transaction[]>{
+    this.getTransactions().subscribe({next:(data)=>{
+      data.forEach(el =>{
+        console.log(el.type)
+      })
+    }})
     return this.getTransactions().pipe(
-      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type == "income") ),
       map( (ingresos)=> this.filterByDate( ingresos, 'day') )
     );
   }
 
   getIngresosDeLaSemana(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === "income") ),
       map( (ingresos)=> this.filterByDate( ingresos, 'week') )
     );
   }
 
   getIngresosDelMes(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === tipo.ingreso) ),
+      map( (ingreso)=> ingreso.filter( transaccion => transaccion.type === "income") ),
       map( (ingresos)=> this.filterByDate( ingresos, 'month') )
     );
   }
 
   addTransaction(transaction: Transaction): Observable<Transaction> {
     return this.http
-      .post<Transaction>(environment.urlApi + '/finances', transaction)
+      .post<Transaction>(environment.urlApi + '/finances/transactions/', transaction)
       .pipe(
         tap((userData) => {
           const currentTransactions = this.transactions.getValue();
@@ -77,10 +82,10 @@ export class FinanzasService {
       );
   }
 
-  updateProveedor(transaction: Transaction) {
+  updateTransaction(transaction: Transaction) {
     return this.http
       .put<Transaction>(
-        environment.urlApi + '/finances/' + transaction.id,
+        environment.urlApi + '/finances/transactions/' + transaction.id,
         transaction
       )
       .pipe(
@@ -100,7 +105,7 @@ export class FinanzasService {
   //GASTOS
   getGastosdelMes(): Observable <Transaction[]>{
     return this.getTransactions().pipe(
-      map( (gastos)=> gastos.filter( transaccion => transaccion.type === tipo.gasto) ),
+      map( (gastos)=> gastos.filter( transaccion => transaccion.type == "spend") ),
       map( (gastos)=> this.filterByDate( gastos, 'month' ) )
     );
   }
@@ -128,9 +133,7 @@ export class FinanzasService {
     const now = new Date();
     
     return transacciones.filter( transaction =>{
-
-      const transaccionDate = new Date( transaction.date );
-      
+      const transaccionDate = new Date( transaction.date+"T00:00:00"); // todo para verificar horario GTM /UTC      
       switch (period) {
         case 'day':
           return transaccionDate.toDateString() === now.toDateString();
