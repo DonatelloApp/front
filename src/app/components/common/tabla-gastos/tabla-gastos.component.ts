@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Transaction } from 'src/app/core/models/Transaction';
+import { FinanzasService } from 'src/app/core/services/finanzas.service';
 
 @Component({
   selector: 'app-tabla-gastos',
@@ -8,32 +10,27 @@ import { Component } from '@angular/core';
   templateUrl: './tabla-gastos.component.html',
   styleUrls: ['./tabla-gastos.component.scss']
 })
-export class TablaGastosComponent {
+export class TablaGastosComponent implements OnInit{
 
-  gastos = [
-    { 
-      "id":0,
-      "destinatario":"Electricidad S.A.",
-      "monto":"$52.000",
-      "vencimiento":"03/07/24"
-    },
-    {
-      "id":1,
-      "destinatario":"Aguas S.A.",
-      "monto":"$48.000",
-      "vencimiento":"10/07/24"
-    },
-    {
-      "id":2,
-      "destinatario":"Gas S.A.",
-      "monto":"$35.000",
-      "vencimiento":"10/07/24"
-    },
-    {
-      "id":3,
-      "destinatario":"Harinera Molinos",
-      "monto":"$9.400",
-      "vencimiento":"10/07/24"
-    }
-  ] 
+  gastos : Transaction[] = [];
+
+  constructor ( private finanzasService:FinanzasService ){
+
+  }
+ 
+  ngOnInit():void{
+    this.obtenerGastosDelMes();
+  }
+
+  obtenerGastosDelMes(){
+    this.finanzasService.getGastosdelMes().subscribe({
+      next:(transacciones) =>{
+        this.gastos = transacciones;
+      },
+      error: ( error )=>{
+        console.error('Error obteniendo los gastos del mes:',error);
+      }
+    })
+  }
+
 }

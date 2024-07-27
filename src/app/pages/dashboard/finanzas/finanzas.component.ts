@@ -6,6 +6,7 @@ import { IngresosComponent } from 'src/app/components/layout/ingresos/ingresos.c
 import { LimiteGastosComponent } from 'src/app/components/layout/limite-gastos/limite-gastos.component';
 import { NavbarComponent } from "../../../components/layout/navbar/navbar.component";
 import { SidebarComponent } from "../../../components/layout/sidebar/sidebar.component";
+import { CalculadoraComponent } from "../../../components/layout/calculadora/calculadora.component";
 
 @Component({
   selector: 'app-finanzas',
@@ -17,7 +18,8 @@ import { SidebarComponent } from "../../../components/layout/sidebar/sidebar.com
     LimiteGastosComponent,
     AnalisisComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CalculadoraComponent
 ],
   templateUrl: './finanzas.component.html',
   styleUrls: ['./finanzas.component.scss']
