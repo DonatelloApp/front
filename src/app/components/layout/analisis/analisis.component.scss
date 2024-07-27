@@ -1,0 +1,26 @@
+.chart-container{
+  position: relative;
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div{
+  border-radius: 1.5rem;
+}
+
+#chart{
+  height:100% !important;
+  width: 65% !important;
+}
+
+h3{
+  margin: 0;
+  margin-top: .5rem;
+}
+
+p{
+  margin: 0;
+}

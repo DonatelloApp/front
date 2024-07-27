@@ -1,0 +1,20 @@
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+.row{
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0;
+
+}
+
+
+
+.btn-primary{
+  background-color: #5b00a7;
+  border-radius: 16px;
+  border: #5b00a7;
+}

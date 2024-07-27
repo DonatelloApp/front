@@ -1,0 +1,95 @@
+
+:root{
+  --black: #060215;
+  --gray100: #e6e5e5;
+  --gray300: #c2bdbd;
+  --white: #f8f8f8;
+
+  --greenTurtle: #018744;
+  --purpleTurtle: #5b00a7;
+  --redTurtle: #e93c3c;
+
+  --greenLight: #86dfb3;
+  --purpleLight: #ceb2e6;
+  --redLight: #ff9e9e;
+}
+
+.content-container {
+  background-color: var(--gray100);
+}
+
+.row{
+  margin: 0;
+  padding: 0;
+}
+.col{
+  margin: 0;
+  padding: 0;
+}
+
+.col-8{
+  margin: 0;
+  padding: 0;
+}
+
+app-ingresos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+app-ganancias{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+app-gastos{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+app-calculadora{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+app-analisis{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+app-limite-gastos{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin-top: .75rem;
+  padding: 0;
+}
+
+main{
+  margin: 0;
+  padding: 0;
+}
+aside{
+  margin: 0;
+  padding: 0;
+}
+section{
+  margin: 0;
+  padding: 0;
+}
+

@@ -1,0 +1,29 @@
+.card{
+  border-radius: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+h3{
+  font-size: small;
+  margin: 0;
+}
+
+p{
+  font-size: large;
+  font-weight: bold;
+  margin: 0;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+}
+.progress{
+  width: 90%;
+  padding: 0%;
+  margin: .75rem;
+}
+
+.progress-bar{
+  background-color: #ff9e9e;
+}

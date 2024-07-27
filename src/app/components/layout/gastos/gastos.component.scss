@@ -1,0 +1,116 @@
+:root{
+  --black:#060215;
+  --gray100:#e6e5e5;
+  --gray300:#c2bdbd;
+  --white:#f8f8f8;
+
+  --greenTurtle:#018744;
+  --purpleTurtle:#5b00a7;
+  --redTurtle:#e93c3c;
+
+  --greenLight:#86dfb3;
+  --purpleLight:#ceb2e6;
+  --redLight:#ff9e9e;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+.col{
+  margin: 0;
+  padding: 0;
+}
+
+
+.fondo{
+  background-color: var(--white);
+}
+
+.tarjeta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head{
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.flecha{
+  display: flex;
+  justify-content: flex-start;
+  width: fit-content;
+  padding-top: 0;
+  margin: 1rem;
+  
+}
+
+.descripcion{
+  
+  height: fit-content;
+  margin: 1.5rem;
+}
+
+div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  //margin: 0;
+  //padding: 1rem;
+  border-radius: 1.5rem;
+}
+
+p{
+  margin: 0;
+  font-size: large;
+  font-weight: bold;
+}
+
+h3{
+  font-weight: bold;
+  font-size: large;
+  margin: 0;
+}
+
+
+hr{
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  border-top: 3px solid var(--black);
+  border-radius: 50px;
+}
+
+.body-table{
+  height: 60%;
+}
+
+.p-table{
+  padding: 1rem;
+}
+
+.botones{
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  background-color: #5b00a7;
+  height: 2.7rem;
+  margin: 10px;
+  border-radius: 16px;
+  border: #5b00a7;
+}
+

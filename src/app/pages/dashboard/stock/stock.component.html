@@ -1,0 +1,100 @@
+<app-navbar [dashboardTitle]="navbarTitle"></app-navbar>
+<div class="d-flex content-container">
+  <app-sidebar></app-sidebar>
+  <div class="container mt-4 mb-3">
+    <label class="title mb-2">Control de inventario</label>
+    <div class="table-wrapper">
+      <table class="fondo table">
+        <thead>
+          <tr class="col-2">
+            <th scope="col" class="col-1">Id</th>
+            <th scope="col" class="col-2">Producto</th>
+            <th scope="col" class="col-2">Precio</th>
+            <th scope="col" class="col-2">Medida</th>
+            <th scope="col" class="col-2">Cantidad</th>
+            <th scope="col" class="col-2">Proveedor</th>
+            <th scope="col" class="col-1">Modificar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prod of products">
+            <td scope="row" class="col-1">{{ prod.id }}</td>
+            <td class="col-2">{{ prod.name }}</td>
+            <td class="col-2">{{ prod.price }}</td>
+            <td class="col-2">{{ prod.unit }}</td>
+            <td class="col-2">{{ prod.stock }}</td>
+            <td class="col-2">
+              <button
+                class="button-show-supplier rounded-pill"
+                type="button"
+                (click)="onSeeProvedor(prod.providerId)"
+                data-bs-toggle="#modal"
+                data-bs-target="#modalInfoProv"
+              >
+                Ver
+              </button>
+            </td>
+            <td class="col-1">
+              <button
+                class="button-edit"
+                type="button"
+                (click)="onEditProduct(prod)"
+                data-bs-toggle="#modal"
+                data-bs-target="#modalModificar"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="#5b00a7"
+                  class="bi bi-pencil-square"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+      <div class="row">
+        <app-product-form
+          class="ps-0 pe-0"
+          [insideModal]="false"
+          *ngIf="!selectedProduct"
+          (save)="onSaveProduct($event)"
+        ></app-product-form>
+      </div>
+    </div>
+
+    <app-modal
+      *ngIf="selectedProduct"
+      title="Editar un producto"
+      (close)="selectedProduct = null"
+    >
+      <app-product-form
+        [product]="selectedProduct"
+        [insideModal]="true"
+        (save)="onSaveProduct($event)"
+      ></app-product-form>
+    </app-modal>
+
+    <app-modal
+      *ngIf="selectedProveedor"
+      title="Detalles Proveedor"
+      (close)="selectedProveedor = null"
+    >
+      <app-proveedor-info
+        [proveedorId]="selectedProveedor"
+      ></app-proveedor-info>
+    </app-modal>
+  </div>
+</div>

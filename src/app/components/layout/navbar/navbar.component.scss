@@ -24,3 +24,25 @@
     border-radius: 0 0 10px 10px; /* Redondea solo los bordes inferiores */
   }
 
+  .logo-dona1{
+    width: 190px;
+  }
+  .titulo-Configuracion{
+    color: #060215;
+  }
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: fill;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.btn-user{
+  padding: 0px;
+  color: #5B00A7;
+}

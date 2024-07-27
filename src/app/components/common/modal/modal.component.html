@@ -1,0 +1,15 @@
+<div class="modal" #modalAgregar aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col-11"><h2>{{ title }}</h2></div>
+        <div class="col"><span class="close" (click)="onClose()">&times;</span></div>
+      </div>
+      
+      <div class="row">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  
+</div>

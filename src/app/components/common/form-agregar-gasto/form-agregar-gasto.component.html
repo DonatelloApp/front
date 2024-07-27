@@ -1,0 +1,64 @@
+
+<form class="container" (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="formulario">
+  <div class="row">
+
+    <div class="col formGroup">
+      <label class="form-label" for="monto">Monto</label>
+      <div>
+        <input class="form-control" type="number" name="monto" placeholder="4.500" formControlName="monto">
+        <span class="form-text"
+          *ngIf="formulario.controls['monto'].errors && formulario.controls['monto'].touched">Campo
+          Requerido</span>
+      </div>
+    </div>
+
+    <div class="col formGroup">
+      <label class="form-label" for="motivo">Motivo</label>
+      <div>
+        <select class="form-control" name="motivo" formControlName="motivo">
+          <option value="motivo de gasto" selected>Motivo de gasto</option>
+
+          <option value="FACTURA">Factura</option>
+          <option value="SERVICIO">Servicio</option>
+          <option value="PROVEEDOR">Proveedor</option>
+          <option value="SUSCRIPCION">Suscripcion</option>
+        </select>
+
+        <span class="form-text"
+          *ngIf="formulario.controls['motivo'].errors && formulario.controls['motivo'].touched">Campo
+          Requerido</span>
+      </div>
+    </div>
+
+    <div class="col formGroup">
+      <label class="form-label" for="fecha">Fecha</label>
+      <div>
+        <input class="form-control" type="date" placeholder="dd/mm/aaaa" formControlName="fecha">
+        <span class="form-text" *ngIf="formulario.controls['fecha'].errors && formulario.controls['fecha'].touched">
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col formGroup">
+      <label class="form-label" for="descripcion">Descripcion</label>
+      <div>
+        <input  class="form-control" type="text" name="descripcion" placeholder="Ingresa descripcion o destinatario del gasto"
+          formControlName="descripcion">
+        <span class="form-text"
+          *ngIf="formulario.controls['descripcion'].errors && formulario.controls['descripcion'].touched">Campo
+          Requerido</span>
+      </div>
+    </div>
+
+    <div class="col boton">
+      <button type="submit" class="btn btn-primary">Cargar</button>
+    </div>
+
+  </div>
+
+</form>

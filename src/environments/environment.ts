@@ -1,4 +1,4 @@
 export const environment = {
-  urlHost: 'http://localhost:8080/',
-  urlApi: 'http://localhost:8080/api',
+  urlHost: 'https://i002-donatello-back-java-latest-z9hn.onrender.com/',
+  urlApi: 'https://i002-donatello-back-java-latest-z9hn.onrender.com/',
 };

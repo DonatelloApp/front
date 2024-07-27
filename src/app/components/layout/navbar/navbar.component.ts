@@ -1,6 +1,6 @@
 import { NgIf } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import {RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import {Router, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
@@ -12,7 +12,14 @@ import { LoginService } from 'src/app/core/services/login.service';
 })
 export class NavbarComponent implements OnInit{
   userLoginOn:boolean=false;
-  private loginService = inject(LoginService)
+  private loginService = inject(LoginService);
+  private router = inject(Router);
+  @Input() dashboardTitle: string | undefined;
+  currentRoute: string = '';
+
+  constructor(){
+    this.currentRoute = this.router.url;
+  }
   
   ngOnInit(): void{
     this.loginService.currentUserLoginOn.subscribe({
@@ -20,5 +27,14 @@ export class NavbarComponent implements OnInit{
         this.userLoginOn=userLoginOn;
       }
     })
+  }
+
+  isRoute(routeName: string): boolean {
+    return this.currentRoute === routeName;
+  }
+
+  logOut(){
+    this.loginService.logOut();
+    this.router.navigateByUrl("/");
   }
 }

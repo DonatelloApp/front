@@ -1,0 +1,99 @@
+<form
+  class="container ps-0 pe-0"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+  [formGroup]="formulario"
+  name="prov-form"
+>
+  <div class="row g3">
+    <div [ngClass]="isInsideModal() ? 'col col-md-6 mt-2' : 'col-12 col-md-3'">
+      <label class="form-label" for="nombre">Nombre</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Proveedor"
+          formControlName="name"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['name'].errors &&
+            formulario.controls['name'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-6 mt-2' : 'col-12 col-md-3'">
+      <label class="form-label" for="empresa">Empresa</label>
+      <div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Nombre de la Empresa"
+          formControlName="company"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['company'].errors &&
+            formulario.controls['company'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-6 mt-2' : 'col-12 col-md-3'">
+      <label class="form-label" for="contacto">Ultimo Contacto</label>
+      <div>
+        <input
+          class="form-control"
+          type="date"
+          placeholder="dd/mm/aaaa"
+          formControlName="lastContact"
+        />
+        <span
+          class="form-text"
+          *ngIf="
+            formulario.controls['lastContact'].errors &&
+            formulario.controls['lastContact'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div [ngClass]="isInsideModal() ? 'col col-md-6 mt-2' : 'col-12 col-md-3'">
+      <label class="form-label" for="telefono">Telefono</label>
+      <div>
+        <input
+          class="form-control"
+          type="tel"
+          placeholder="Número"
+          formControlName="contact"
+        />
+        <span
+          class="invalid-feedback"
+          *ngIf="
+            formulario.controls['contact'].errors &&
+            formulario.controls['contact'].touched
+          "
+        >
+          Campo Requerido
+        </span>
+      </div>
+    </div>
+
+    <div class="col-12 guardar mt-2">
+      <div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </div>
+    </div>
+  </div>
+</form>
