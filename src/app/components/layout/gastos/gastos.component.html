@@ -12,7 +12,7 @@
     </div>
     <div class="descripcion">
       <p>Gastos del mes</p>
-      <h3>$24.650</h3>
+      <h3>{{totalGastosDelMes | currency:'ARS':'symbol-narrow'}}</h3>
     </div>
   </div>
 
@@ -26,15 +26,15 @@
             <tr>
               <th scope="col" >Motivo</th>
               <th scope="col">Monto</th>
-              <th scope="col">Vencimiento</th>
+              <th scope="col">Fecha</th>
             </tr>
           </thead>
   
           <tbody>
-            <tr *ngFor="let gasto of gastos">
-              <td>{{gasto.motivo}}</td>
-              <td>{{gasto.monto}}</td>
-              <td>{{gasto.vencimiento}}</td>
+            <tr *ngFor="let gasto of gastosDelMes | slice:0:4">
+              <td>{{gasto.origin}}</td>
+              <td>{{gasto.amount}}</td>
+              <td>{{gasto.date}}</td>
             </tr>
           </tbody>
         </table>

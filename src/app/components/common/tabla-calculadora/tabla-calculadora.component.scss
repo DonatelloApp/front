@@ -1,0 +1,45 @@
+.container{
+  height: 100%;
+  width: 100%;
+}
+
+.table-sm{
+  height: 100%;
+  width: 100%;
+}
+
+thead{
+  height: 10%;
+}
+
+th{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: large;
+  font-weight: bold;
+}
+
+tbody{
+  max-height: 60%;
+  overflow: scroll;
+}
+
+tfoot{
+  max-height: 30%;
+}
+
+
+.bold{
+  height: 3rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+.grey{
+  height: 3rem;
+  font-size: large;
+  font-weight: bold;
+  color: gray;
+}
+

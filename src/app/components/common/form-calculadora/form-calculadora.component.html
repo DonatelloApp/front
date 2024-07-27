@@ -1,0 +1,52 @@
+<form class="container" (ngSubmit)="onSubmit()" autocomplete="off" [formGroup]="formulario">
+
+  <div class="row">
+    <input 
+      type="text" 
+      class="form-control" 
+      name="producto" 
+      placeholder="Nombre del producto" 
+      formControlName="producto"
+      [disabled]="!!formulario.get('producto')?.disabled">
+      
+  </div>
+
+  <div class="row">
+    <select class="form-select" name="ingrediente" formControlName="ingrediente">
+      
+      <option 
+        [value]="ing.id" 
+        *ngFor="let ing of ingredientes">
+
+          {{ing.name}}
+      </option>
+    
+    </select>
+  </div>
+
+  <div class="row">
+    <input 
+      type="number"
+      class="form-control"
+      name="cantidad"
+      placeholder="Ingresa la cantidad"
+      formControlName="cantidad"
+    >
+  </div>
+
+  <div class="row">
+    <select class="form-select" name="medida" formControlName="medida">
+      <option disabled selected>Ingresa la medida</option>
+
+      <option value="un">un</option>
+      <option value="kg">gr</option>
+      <option value="lt">ml</option>
+
+    </select>
+  </div>
+
+  <div class="boton row">
+    <button type="submit" class="btn btn-primary">Agregar ingrediente</button>
+  </div>
+
+</form>

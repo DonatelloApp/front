@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<div class="d-flex content-container">
+  <app-sidebar></app-sidebar>
+  <div class="container mt-4 mb-3">
+    <div class="row">
+      <div class="col">
+        <app-welcome-card [companyName]="companyName"></app-welcome-card>
+      </div>
+      <div class="col">
+        <app-revenue-resume [revenue]="revenue"></app-revenue-resume>
+      </div>
+      <div class="col">
+        <app-expenses-resume [expenses]="expenses"></app-expenses-resume>
+      </div>
+      <div class="col">
+        <app-earnings-resume [earnings]="earnings"></app-earnings-resume>
+      </div>
+    </div>
+  </div>
+</div>
